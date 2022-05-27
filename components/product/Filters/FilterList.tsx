@@ -56,7 +56,7 @@ const FilterItem = ({
           name={`${optionIdx}-input[]`}
           defaultValue={option.value}
           type="checkbox"
-          className="h-4 w-4 border-gray-300 rounded filter-input"
+          className="h-4 w-4 border-gray-300 filter-input"
         />
 
         <label
