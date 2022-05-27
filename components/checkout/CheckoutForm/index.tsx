@@ -606,10 +606,10 @@ export default function CheckoutForm({
 
               {state.isCNC || isShippingDisabled ? null : (
                 <div className="mt-4 border-t border-gray-200 pt-4">
-                  <h2 className="text-lg font-semibold text-gray-900">
+                  <h2 className="text-lg font-bold text-black uppercase">
                     {SHIPPING_INFORMATION}
                   </h2>
-                  {state?.isDeliveryMethodSelected ? (
+                  {state?.isDeliveryMethodSelected || state?.isShippingInformationCompleted ? (
                     <>
                       <Form
                         toggleAction={toggleShipping}
@@ -642,7 +642,7 @@ export default function CheckoutForm({
 
               {/* Payment */}
               <div className="mt-6 border-t border-gray-200 pt-6">
-                <h2 className="text-lg font-semibold text-gray-900">
+                <h2 className="text-lg font-bold text-black uppercase">
                   {BILLING_INFORMATION}
                 </h2>
                 {(state?.isShippingInformationCompleted ||
@@ -673,7 +673,7 @@ export default function CheckoutForm({
                 )}
               </div>
               <div className="mt-6 border-t border-gray-200 pt-6">
-                <h2 className="text-lg font-semibold text-gray-900">
+                <h2 className="text-lg font-bold text-black uppercase">
                   {GENERAL_PAYMENT}
                 </h2>
                 {state.isPaymentInformationCompleted && (

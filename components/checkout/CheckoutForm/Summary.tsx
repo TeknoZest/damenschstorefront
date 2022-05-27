@@ -21,7 +21,7 @@ export default function Summary({
 }: any) {
   return (
     <div className="mt-10 lg:mt-0 md:sticky top-0">
-      <h2 className="text-lg font-medium text-gray-900">{GENERAL_ORDER_SUMMARY}</h2>
+      <h2 className="text-lg font-medium text-gray-900 uppercase">{GENERAL_ORDER_SUMMARY}</h2>
 
       <div className="mt-4 bg-white border border-gray-200 rounded-lg shadow-sm">
         <h3 className="sr-only">{ITEMS_IN_YOUR_CART}</h3>

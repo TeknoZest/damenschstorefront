@@ -66,7 +66,7 @@ export default function CheckoutRouter({
     <section aria-labelledby="trending-heading" className="bg-white">
       <div className="py-16 sm:py-24 lg:max-w-7xl lg:mx-auto lg:py-32 lg:px-8">
         <div className="px-4 flex flex-col items-center justify-center sm:px-6 lg:px-0">
-          <h2 className="text-6xl font-extrabold text-center tracking-tight text-gray-900">
+          <h2 className="text-5xl uppercase font-bold text-center tracking-tight text-gray-900">
             {BTN_CHECKOUT_SECURELY}
           </h2>
         </div>

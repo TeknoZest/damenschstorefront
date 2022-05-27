@@ -3,16 +3,16 @@ import { useRouter } from 'next/router'
 //USE THIS AS TEMPLATE
 const content: any = {
   'en-US': {
-    GENERAL_CHECKOUT: 'Checkout en-US',
+    GENERAL_CHECKOUT: 'Checkout',
   },
   es: {
-    GENERAL_CHECKOUT: 'Checkout es',
+    GENERAL_CHECKOUT: 'Checkout',
   },
   'en-GB': {
-    GENERAL_CHECKOUT: 'Checkout en-GB',
+    GENERAL_CHECKOUT: 'Checkout',
   },
   'es-ES': {
-    GENERAL_CHECKOUT: 'Checkout es-ES',
+    GENERAL_CHECKOUT: 'Checkout',
   },
 }
 
@@ -310,3 +310,7 @@ export const SHOP_BY_CATEGORY = 'Shop by Category'
 export const SHOP_BY_COLLECTION = 'Shop by Collection'
 export const SHOP_BY_LIFESTYLRE = 'Shop by Lifestyle'
 export const PRODUCTS_AVAILABLE = 'Products available'
+export const PRODUCT_IN_STOCK = 'In Stock'
+export const PRODUCT_OUT_OF_STOCK='Out Of Stock'
+export const PRODUCT_AVAILABILITY='Availability'
+export const SLUG_TYPE_MANUFACTURER = 'Manufacturer'

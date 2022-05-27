@@ -21,6 +21,7 @@ import {
   GENERAL_EDIT,
   GENERAL_CONFIRM,
   GENERAL_DELIVERY_METHOD,
+  BTN_CONTINUE,
 } from '@components/utils/textVariables'
 
 const DELIVERY_METHODS_TYPE = [
@@ -190,10 +191,10 @@ export default function Delivery({
   }
 
   return (
-    <div className="py-10 mt-10 border-t border-gray-200">
+    <div className="py-4 mt-10 border-t border-gray-200">
       {isDeliveryMethodSelected ? (
         <>
-          <h3 className="text-lg font-medium text-gray-900">Delivery method</h3>
+          <h3 className="text-lg font-bold text-gray-900 uppercase">Delivery method</h3>
           <ConfirmedGeneralComponent
             onStateChange={toggleDelivery}
             content={content}
@@ -202,7 +203,7 @@ export default function Delivery({
       ) : (
         <>
           <div className="py-5">
-            <h1 className="text-lg font-semibold text-gray-900">
+            <h1 className="text-lg font-semibold text-black uppercase">
               {GENERAL_SELECT_COUNTRY}
             </h1>
 
@@ -225,7 +226,7 @@ export default function Delivery({
               <>
                 <select
                   onChange={handleChange}
-                  className="mb-2 mt-2 appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 "
+                  className="mb-2 mt-2 appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 "
                 >
                   {appConfig.shippingCountries?.map(
                     (country: any, idx: number) => {
@@ -245,7 +246,7 @@ export default function Delivery({
                   <Button
                     buttonType="button"
                     action={async () => setIsSelected(true)}
-                    title={GENERAL_CONFIRM}
+                    title={BTN_CONTINUE}
                   />
                 </div>
               </>
@@ -255,7 +256,7 @@ export default function Delivery({
             value={selectedDeliveryMethod}
             onChange={handleDeliveryMethodChange}
           >
-            <RadioGroup.Label className="text-lg font-semibold text-gray-900">
+            <RadioGroup.Label className="text-lg font-semibold uppercase text-gray-900">
               {GENERAL_DELIVERY_METHOD}
             </RadioGroup.Label>
 
@@ -269,8 +270,8 @@ export default function Delivery({
                       className={({ checked, active }) =>
                         classNames(
                           checked ? 'border-transparent' : 'border-gray-300',
-                          active ? 'ring-2 ring-indigo-500' : '',
-                          'relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none'
+                          active ? 'ring-2 ring-gray-500' : '',
+                          'relative bg-white border shadow-sm p-4 flex cursor-pointer focus:outline-none'
                         )
                       }
                     >
@@ -280,7 +281,7 @@ export default function Delivery({
                             <div className="flex flex-col">
                               <RadioGroup.Label
                                 as="span"
-                                className="block text-sm font-medium text-gray-900"
+                                className="block text-sm uppercase font-medium text-gray-900"
                               >
                                 {deliveryMethod.title}
                               </RadioGroup.Label>
@@ -300,7 +301,7 @@ export default function Delivery({
                           </div>
                           {checked ? (
                             <CheckCircleIcon
-                              className="h-5 w-5 text-indigo-600"
+                              className="h-5 w-5 text-black"
                               aria-hidden="true"
                             />
                           ) : null}
@@ -308,9 +309,9 @@ export default function Delivery({
                             className={classNames(
                               active ? 'border' : 'border-2',
                               checked
-                                ? 'border-indigo-500'
+                                ? 'border-black'
                                 : 'border-transparent',
-                              'absolute -inset-px rounded-lg pointer-events-none'
+                              'absolute -inset-px pointer-events-none'
                             )}
                             aria-hidden="true"
                           />
@@ -320,18 +321,18 @@ export default function Delivery({
                   )
               )}
             </div>
-            <ul className={`text-gray-900 mt-10`}>
+            <ul className={`text-gray-900 mt-4`}>
               {selectedDeliveryMethod.children.map((item: any, idx: number) => {
                 return (
                   <div key={idx} className="flex flex-col">
                     <li
                       onClick={() => handleShippingMethod(item)}
                       className={`${
-                        shippingMethod.id === item.id ? 'border-indigo-600' : ''
+                        shippingMethod.id === item.id ? 'border-black' : ''
                       }  pointer border-t border py-5 px-5 flex justify-between flex-row`}
                     >
                       <div>
-                        <h3 className="font-bold">{item.displayName}</h3>
+                        <h3 className="font-bold uppercase">{item.displayName}</h3>
                         <p className="text-sm py-2">{item.description}</p>
                       </div>
                       <div className="flex flex-row justify-center items-center">
@@ -339,7 +340,7 @@ export default function Delivery({
                         {shippingMethod.id === item.id ? (
                           <div className="ml-5">
                             <CheckCircleIcon
-                              className="h-5 w-5 text-indigo-600"
+                              className="h-5 w-5 text-black"
                               aria-hidden="true"
                             />
                           </div>
@@ -366,7 +367,7 @@ export default function Delivery({
               <Button
                 buttonType="button"
                 action={submitShippingMethod}
-                title={GENERAL_CONFIRM}
+                title={BTN_CONTINUE}
               />
             </div>
           ) : null}

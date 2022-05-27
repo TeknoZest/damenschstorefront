@@ -23,6 +23,7 @@ import {
   GENERAL_SHIPPING,
   GENERAL_SHOPPING_CART,
   GENERAL_TOTAL,
+  IMG_PLACEHOLDER,
   ITEMS_IN_YOUR_CART,
   SUBTOTAL_INCLUDING_TAX,
 } from '@components/utils/textVariables'
@@ -131,7 +132,7 @@ function Cart({ cart }: any) {
   return (
     <div className="bg-white">
       <main className="max-w-2xl mx-auto sm:pt-16 pt-6 sm:pb-24 pb-0 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <h1 className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl uppercase">
           {GENERAL_SHOPPING_CART}
         </h1>
         {!isEmpty && (
@@ -152,7 +153,7 @@ function Cart({ cart }: any) {
                         layout="fixed"
                         width={160}
                         height={160}
-                        src={`${product.image}`}
+                        src={`${product.image}?fm=webp&h=200&w=200` || IMG_PLACEHOLDER}
                         alt={product.name}
                         className="w-16 h-16 rounded-md object-center object-cover sm:w-48 sm:h-48 image"
                       ></Image>
@@ -167,14 +168,11 @@ function Cart({ cart }: any) {
                         <div className="flex flex-col justify-between h-full">
                           <div>
                             <div className="flex justify-between flex-col">
-                              <h3 className="sm:py-2 py-0 sm:text-md text-sm font-bold text-gray-900">
-                                {product.brand}
-                              </h3>
-                              <h3 className="sm:text-sm text-xs my-2 sm:my-0">
+                              <h3 className="text-md my-2 sm:my-0">
                                 <Link href={`/${product.slug}`}>
                                   <a
                                     href={product.slug}
-                                    className="font-medium text-gray-700 hover:text-gray-800"
+                                    className="font-medium text-black hover:text-gray-800"
                                   >
                                     {product.name}
                                   </a>
@@ -182,7 +180,7 @@ function Cart({ cart }: any) {
                               </h3>
                             </div>
 
-                            <p className="mt-1 text-sm sm:font-medium font-bold text-gray-900">
+                            <p className="mt-1 text-sm font-bold text-black">
                               {product.price?.formatted?.withTax}
                             </p>
                             {product.children?.map(
@@ -283,7 +281,7 @@ function Cart({ cart }: any) {
             >
               <h2
                 id="summary-heading"
-                className="text-lg font-medium text-gray-900"
+                className="text-xl font-bold text-black uppercase"
               >
                 {GENERAL_ORDER_SUMMARY}
               </h2>
@@ -293,7 +291,7 @@ function Cart({ cart }: any) {
                   <dt className="text-sm text-gray-600">
                     {SUBTOTAL_INCLUDING_TAX}
                   </dt>
-                  <dd className="text-sm font-medium text-gray-900">
+                  <dd className="text-md font-medium text-gray-900">
                     {cartItems.subTotal?.formatted?.withTax}
                   </dd>
                 </div>
@@ -320,8 +318,8 @@ function Cart({ cart }: any) {
                 <PromotionInput />
 
                 <div className="text-gray-900 border-t border-gray-200 pt-4 flex items-center justify-between">
-                  <dt className="font-medium text-gray-900">{GENERAL_TOTAL}</dt>
-                  <dd className="font-medium text-gray-900">
+                  <dt className="font-medium text-xl text-gray-900">{GENERAL_TOTAL}</dt>
+                  <dd className="font-bold text-2xl text-black">
                     {cartItems.grandTotal?.formatted?.withTax}
                   </dd>
                 </div>
@@ -331,7 +329,7 @@ function Cart({ cart }: any) {
                 <Link href="/checkout">
                   <a
                     type="submit"
-                    className="text-center w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+                    className="text-center w-full bg-black border uppercase border-transparent rounded-sm shadow-sm py-3 px-4 font-medium text-white hover:bg-pink focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
                   >
                     {BTN_CHECKOUT_NOW}
                   </a>

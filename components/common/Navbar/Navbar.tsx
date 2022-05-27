@@ -347,7 +347,7 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
                                 leaveFrom="opacity-100"
                                 leaveTo="opacity-0"
                               >
-                                <Popover.Panel className="absolute top-full z-50 inset-x-0 text-gray-500 sm:text-sm">
+                                <Popover.Panel className="absolute top-full z-999 inset-x-0 text-gray-500 sm:text-sm">
                                   {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                                   <div
                                     className="absolute inset-0 top-1/2 bg-white shadow"
@@ -436,7 +436,7 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
 
                 <div className="px-1 w-20 flow-root">
                   <button
-                    className="group grid grid-cols-1 items-center text-center align-center justify-center flex-col"
+                    className="relative group grid grid-cols-1 items-center text-center align-center justify-center flex-col"
                     onClick={openWishlist}
                   >
                     <HeartIcon
@@ -445,7 +445,7 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
                     />
                     <span className='font-bold block text-xs text-black'>Wishlist</span>
                     {wishListItems.length > 0 &&
-                      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                     <span className="ml-2 absolute top-0 -right-0 w-4 h-4 text-white rounded-full bg-pink text-center text-xs font-medium">                     
                           {wishListItems.length}
                       </span>
                     }
@@ -456,7 +456,7 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
 
                 <div className="px-1 w-20 flow-root">
                   <button
-                    className="group grid grid-cols-1 items-center text-center align-center justify-center flex-col"
+                    className="group grid relative grid-cols-1 items-center text-center align-center justify-center flex-col"
                     onClick={openCart}
                   >
                     <ShoppingBagIcon
@@ -465,7 +465,7 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
                     />
                      <span className='font-bold block text-xs text-black'>Bag</span>
                      {cartItems.lineItems?.length > 0 &&
-                        <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">                     
+                        <span className="ml-2 absolute top-0 -right-2 w-4 h-4 text-white rounded-full bg-pink text-center text-xs font-medium">                     
                       {cartItems.lineItems?.length}
                     </span>
 }

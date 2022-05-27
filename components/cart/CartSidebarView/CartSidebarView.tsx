@@ -93,7 +93,7 @@ const CartSidebarView: FC = () => {
     <Transition.Root show={true} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 overflow-hidden z-50"
+        className="fixed inset-0 overflow-hidden z-999"
         onClose={handleClose}
       >
         <div className="absolute inset-0 overflow-hidden">
@@ -106,7 +106,7 @@ const CartSidebarView: FC = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="" />
+            <Dialog.Overlay className="w-full h-screen" onClick={handleClose} />
           </Transition.Child>
 
           <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
@@ -123,7 +123,7 @@ const CartSidebarView: FC = () => {
                 <div className="h-full flex flex-col bg-white shadow-xl overflow-y-scroll">
                   <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
                     <div className="flex items-start justify-between">
-                      <Dialog.Title className="text-lg font-medium text-gray-900">
+                      <Dialog.Title className="text-lg font-medium text-black uppercase">
                         {GENERAL_SHOPPING_CART}
                       </Dialog.Title>
                       <div className="ml-3 h-7 flex items-center">
@@ -180,7 +180,7 @@ const CartSidebarView: FC = () => {
 
                                 <div className="ml-4 flex-1 flex flex-col">
                                   <div>
-                                    <div className="flex justify-between font-medium text-gray-900">
+                                    <div className="flex justify-between font-sm font-semibold text-gray-900">
                                       <h3 onClick={handleClose}>
                                         <Link href={`/${product.slug}`}>
                                           {product.name}
@@ -198,7 +198,7 @@ const CartSidebarView: FC = () => {
                                     <div className="flex justify-between w-full">
                                       <button
                                         type="button"
-                                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                                        className="font-medium text-red-300 hover:text-red-500"
                                         onClick={() =>
                                           handleItem(product, 'delete')
                                         }
@@ -234,16 +234,11 @@ const CartSidebarView: FC = () => {
                                         <div className='image-container'>
                                           <Image
                                             layout='fill'
-                                            src={child.image}
+                                            src={`${child.image}?w=100&h=100&fm=webp`}
                                             alt={child.name}
                                             className="w-full h-full object-center object-cover image"
                                           ></Image>
                                         </div>
-                                        {/* <img
-                                          src={child.image}
-                                          alt={child.name}
-                                          className="w-full h-full object-center object-cover"
-                                        /> */}
                                       </div>
                                       <div className="ml-4 flex-1 flex flex-col">
                                         <div>
@@ -310,7 +305,7 @@ const CartSidebarView: FC = () => {
                         <Link href="/cart" passHref>
                           <a
                             onClick={handleClose}
-                            className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                            className="flex justify-center items-center px-6 py-3 border border-transparent rounded-sm uppercase shadow-sm font-medium text-white bg-black hover:bg-pink"
                             href="/cart"
                           >
                             {content.GENERAL_CHECKOUT}
@@ -322,7 +317,7 @@ const CartSidebarView: FC = () => {
                           {GENERAL_OR_TEXT}{' '}
                           <button
                             type="button"
-                            className="text-indigo-600 font-medium hover:text-indigo-500"
+                            className="text-black font-medium hover:text-pink"
                             onClick={handleClose}
                           >
                             {GENERAL_CONTINUE_SHOPPING}

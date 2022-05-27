@@ -16,3 +16,15 @@
   text-align: center;
   right: 0!important;
 }
+
+.full-table table{
+  width: 100%!important;
+}
+
+.full-table table th{
+  background: #f5f5f5!important;
+}
+
+.max-w-md{
+  max-width: 29.2rem!important;
+}
