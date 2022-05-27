@@ -84,6 +84,7 @@ export default function ProductView({
     user,
     openCart,
   } = useUI()
+
   const [isZoomed, setIsZoomed] = useState(false)
 
   const handleImgLoad = useCallback(() => {
@@ -94,15 +95,6 @@ export default function ProductView({
     setIsZoomed(shouldZoom)
   }, [])
 
-  const [isZoomedT, setIsZoomedT] = useState(false)
-
-  const handleImgLoadT = useCallback(() => {
-    setIsZoomedT(true)
-  }, [])
-
-  const handleZoomChangeT = useCallback(shouldZoomT => {
-    setIsZoomedT(shouldZoomT)
-  }, [])
   const [updatedProduct, setUpdatedProduct] = useState(null)
   const [isPriceMatchModalShown, showPriceMatchModal] = useState(false)
   const [isEngravingOpen, showEngravingModal] = useState(false)
@@ -405,6 +397,7 @@ export default function ProductView({
     }
   }*/
   
+
   return (
     <div className="bg-white page-container md:w-4/5 mx-auto">
       {/* Mobile menu */}
@@ -417,8 +410,8 @@ export default function ProductView({
         <div className="lg:max-w-none">
           {/* Product */}
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:items-start">
-            {/* Image gallery */}
-            <Tab.Group as="div" className="flex flex-col-reverse lg:col-span-7">
+             {/* Image gallery */}
+             {/* <Tab.Group as="div" className="flex flex-col-reverse lg:col-span-7">
               <div className="grid sm:grid-cols-12 grid-cols-1 sm:gap-x-8">
                 <div className='col-span-6'>
                   <div className="hidden w-full max-w-2xl mx-auto sm:block lg:max-w-none">
@@ -484,13 +477,38 @@ export default function ProductView({
                   </Tab.Panels>
                 </div>
               </div>
-            </Tab.Group>
+            </Tab.Group> */}
+            <div className="flex flex-col-reverse lg:col-span-7">
+              <div className='grid grid-cols-2 gap-x-8 gap-y-6'>
+                {content?.map((image: any, idx) => (
+                  <div>
+                    <span className="sr-only">{image.name}</span>
+                    <span className="relative">
+                      {image.image ? (
+                        <div className='image-container'>
+                          <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange}>
+                            <img
+                              src={`${image.image}?h=1000&w=600&fm=webp` || IMG_PLACEHOLDER}                             
+                              alt={image.name}
+                              onClick={handleImgLoad}
+                              width="500"
+                            />
+                          </ControlledZoom>
+                        </div>
+                      ) : (
+                        <PlayIcon className="h-full w-full object-center object-cover" />
+                      )}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             {/* Product info */}
             <div className="sm:mt-10 mt-2 px-4 sm:px-0 sm:mt-16 lg:mt-0 lg:col-span-5">
-              {/* <h3 className="sm:text-md text-sm uppercase font-semibold sm:font-bold tracking-tight text-gray-700 mb-2">
+              <h3 className="sm:text-xl text-sm font-bold sm:font-bold tracking-tight text-black mb-2">
                 {selectedAttrData.brand}
-              </h3> */}
+              </h3>
               <h1 className="sm:text-2xl text-lg font-normal tracking-tight text-black">
                 {selectedAttrData.name || selectedAttrData.productName}
               </h1>
