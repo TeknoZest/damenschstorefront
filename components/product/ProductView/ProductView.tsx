@@ -1,6 +1,8 @@
-import { useEffect, useCallback, useState } from 'react'
-import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
+import { useEffect, useState } from 'react'
+// import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
+// import 'react-medium-image-zoom/dist/styles.css'
+import InnerImageZoom from 'react-inner-image-zoom';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 import { Tab } from '@headlessui/react'
 import { HeartIcon } from '@heroicons/react/outline'
 import { StarIcon, PlayIcon } from '@heroicons/react/solid'
@@ -85,16 +87,7 @@ export default function ProductView({
     openCart,
   } = useUI()
 
-  const [isZoomed, setIsZoomed] = useState(false)
-
-  const handleImgLoad = useCallback(() => {
-    setIsZoomed(true)
-  }, [])
-
-  const handleZoomChange = useCallback(shouldZoom => {
-    setIsZoomed(shouldZoom)
-  }, [])
-
+  
   const [updatedProduct, setUpdatedProduct] = useState(null)
   const [isPriceMatchModalShown, showPriceMatchModal] = useState(false)
   const [isEngravingOpen, showEngravingModal] = useState(false)
@@ -481,19 +474,21 @@ export default function ProductView({
             <div className="flex flex-col-reverse lg:col-span-7">
               <div className='grid grid-cols-2 gap-x-8 gap-y-6'>
                 {content?.map((image: any, idx) => (
-                  <div>
+                  <div key={idx}>
                     <span className="sr-only">{image.name}</span>
                     <span className="relative">
                       {image.image ? (
                         <div className='image-container'>
-                          <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange}>
+                          <InnerImageZoom src={`${image.image}?h=1000&w=600&fm=webp` || IMG_PLACEHOLDER}  zoomSrc={`${image.image}?h=3000&w=1800&fm=webp` || IMG_PLACEHOLDER}  />
+
+                          {/* <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange}>
                             <img
                               src={`${image.image}?h=1000&w=600&fm=webp` || IMG_PLACEHOLDER}                             
                               alt={image.name}
                               onClick={handleImgLoad}
                               width="500"
                             />
-                          </ControlledZoom>
+                          </ControlledZoom> */}
                         </div>
                       ) : (
                         <PlayIcon className="h-full w-full object-center object-cover" />

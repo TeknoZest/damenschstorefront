@@ -1213,6 +1213,22 @@
   resolved "https://registry.npmjs.org/@types/react-gtm-module/-/react-gtm-module-2.0.1.tgz"
   integrity sha512-T/DN9gAbCYk5wJ1nxf4pSwmXz4d1iVjM++OoG+mwMfz9STMAotGjSb65gJHOS5bPvl6vLSsJnuC+y/43OQrltg==
 
+"@types/react-inner-image-zoom@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-inner-image-zoom/-/react-inner-image-zoom-3.0.0.tgz#4bd02819367e8876dff077810a8ecc3d213bcad1"
+  integrity sha512-etD8dNKfLVXHwoRqffIgTdi7uFizhlVQgGMC51bNNEN20rCJ/6NP/ce9vSjRBIRC5wDPrXVNAsLqB2Fb7L8+Xw==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*":
+  version "18.0.9"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.9.tgz#d6712a38bd6cd83469603e7359511126f122e878"
+  integrity sha512-9bjbg1hJHUm4De19L1cHiW0Jvx3geel6Qczhjd0qY5VKVE2X5+x77YxAepuCwVh4vrgZJdgEJw48zrhRIeF4Nw==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
 "@types/react@^17.0.8":
   version "17.0.27"
   resolved "https://registry.npmjs.org/@types/react/-/react-17.0.27.tgz"
@@ -5273,6 +5289,11 @@ react-infinite-scroll-component@^6.1.0:
   integrity sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==
   dependencies:
     throttle-debounce "^2.1.0"
+
+react-inner-image-zoom@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-inner-image-zoom/-/react-inner-image-zoom-3.0.0.tgz#507e00ec0c190951a5a5c7261a36ca059d99f717"
+  integrity sha512-5Xda9xUGAaPHIMpw1hQ66dIXAQfylCgxiEgzcCy0Jy0T/RrMgzIOiBD3ls8R83rTu8cLwZ7jDCtt8xbguQD3OQ==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
