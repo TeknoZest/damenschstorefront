@@ -1,3 +1,18 @@
 .fit {
   min-height: calc(100vh - 88px);
 }
+
+.z-999{
+  z-index: 999999!important;
+}
+
+.z-99{
+  z-index: 99999!important;
+}
+
+.add-wishlist{
+  bottom: -25px!important;
+  padding: 6px;
+  text-align: center;
+  right: 0!important;
+}

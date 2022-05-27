@@ -41,10 +41,10 @@ export default function FiltersRightOpen({
   return (
     <div className="bg-transparent">
       {/* Mobile filter dialog */}
-      <div className="max-w-3xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="max-w-3xl pl-4 text-center lg:max-w-7xl">
         <section
           aria-labelledby="filter-heading"
-          className="border-t border-gray-200 py-1"
+          className="border-b mb-6 py-1"
         >
           <h2 id="filter-heading" className="sr-only">
             {PRODUCT_FILTER}

@@ -159,15 +159,15 @@ const ProductCard: FC<Props> = ({ product }) => {
   const buttonConfig = buttonTitle()
 
   return (
-    <div className="border-b border-r border-gray-200">
-      <div key={product.id} className="group relative p-2 sm:p-6">
+    <div className="">
+      <div key={product.id} className="group relative">
         <Link
           passHref
           href={`/${currentProductData.link}`}
           key={'data-product' + currentProductData.link}
         >
           <a href={currentProductData.link}>
-            <div className="relative rounded-lg overflow-hidden bg-gray-200 aspect-w-1 aspect-h-1 group-hover:opacity-75">
+            <div className="relative overflow-hidden bg-gray-200 aspect-w-1 aspect-h-1 group-hover:opacity-75">
               <div className='image-container'>
                 <Image
                   src={currentProductData.image || IMG_PLACEHOLDER}
@@ -192,14 +192,14 @@ const ProductCard: FC<Props> = ({ product }) => {
 
         <div className="pt-4 pb-2 text-left grid sm:grid-cols-12 grid-cols-1">
           <div className='sm:col-span-8'>
-            <h3 className="sm:min-h-50px sm:text-sm text-xs font-medium text-gray-900 line-clip-2 text-center sm:text-left">
+            <h3 className="truncate sm:text-sm text-xs font-medium text-gray-900 line-clip-2 text-center sm:text-left">
               <Link href={`/${currentProductData.link}`}>
                 <a href={`/${currentProductData.link}`}>{product.name}</a>
               </Link>
             </h3>
           </div>
           <div className='sm:col-span-4'>
-            <p className="font-bold text-gray-900 sm:text-right text-center">
+            <p className="font-bold text-black sm:text-right text-center">
               {product?.price?.formatted?.withTax}
             </p>
           </div>

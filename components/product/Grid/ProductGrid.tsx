@@ -23,7 +23,7 @@ export default function CategoryGrid({
   return (
     <section
       aria-labelledby="products-heading"
-      className="max-w-7xl overflow-hidden sm:px-6 lg:px-8 mx-auto"
+      className="overflow-hidden"
     >
       <h2 id="products-heading" className="sr-only">
         {TITLE_PRODUCTS}
@@ -36,10 +36,10 @@ export default function CategoryGrid({
           currentNumber={products.results.length}
           component={
             <div
-              className={`-mx-px border-l border-t border-gray-200 grid grid-cols-2 sm:mx-0 md:grid-cols-4 ${
-                products.results.length < 4
-                  ? `lg:grid-cols-4`
-                  : 'lg:grid-cols-4'
+              className={`grid grid-cols-2 md:grid-cols-6 ${
+                products.results.length < 7
+                  ? `lg:grid-cols-6`
+                  : 'lg:grid-cols-6'
               }`}
             >
               {!products.results.length &&
@@ -65,7 +65,7 @@ export default function CategoryGrid({
       )}
       {!IS_INFINITE_SCROLL && (
         <>
-          <div className="-mx-px border-l border-t border-gray-200 grid grid-cols-2 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">
+          <div className="border-l border-t border-gray-200 grid grid-cols-2 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">
             {!products.results.length &&
               rangeMap(12, (i) => (
                 <div

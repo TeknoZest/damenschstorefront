@@ -12,6 +12,8 @@ import { EVENTS, KEYS_MAP } from '@components/utils/dataLayer'
 import { EVENTS_MAP } from '@components/services/analytics/constants'
 import { useUI } from '@components/ui/context'
 import useAnalytics from '@components/services/analytics/useAnalytics'
+import { GENERAL_CATALOG, RESULTS } from '@components/utils/textVariables'
+import BreadCrumbs from '@components/ui/BreadCrumbs'
 export const ACTION_TYPES = {
   SORT_BY: 'SORT_BY',
   PAGE: 'PAGE',
@@ -283,18 +285,14 @@ function Search({ query, setEntities, recordEvent }: any) {
     : data.products
 
   return (
-    <div className="bg-white">
-      {/* Mobile menu */}
+    <div className="bg-white md:w-4/5 mx-auto">
       <main className="pb-24">
-        <div className="text-center sm:py-16 py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="sm:text-4xl text-2xl font-extrabold tracking-tight text-gray-900">
-            Catalog
-          </h1>
-          <h1 className="sm:text-xl text-lg mt-2 font-medium tracking-tight text-gray-500">
-            {data.products.total} results
+        <div className="text-left sm:py-4 py-3 sm:px-0 px-4">
+          <h1 className="sm:text-xl text-xl font-semibold tracking-tight text-black">
+            {GENERAL_CATALOG} <span className='font-normal text-gray-500 sm:text-md text-sm'> {' -'} {data.products.total}{' '}{RESULTS}</span>
           </h1>
         </div>
-        <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 max-w-7xl mx-auto overflow-hidden sm:px-6 lg:px-8">
+        <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 md:w-full mx-auto overflow-hidden sm:border-t sm:border-gray-200 sm:pt-0">
           {/* {MOBILE FILTER PANEL SHOW ONLY IN MOBILE} */}
 
           <div className="sm:col-span-3 sm:hidden flex flex-col">
@@ -310,14 +308,14 @@ function Search({ query, setEntities, recordEvent }: any) {
 
           {/* {FILTER PANEL SHOW ONLY IN DESKTOP VERSION} */}
 
-          <div className="sm:col-span-3 sm:block hidden">
+          <div className="sm:col-span-2 sm:block hidden">
             <ProductFilterRight
               handleFilters={handleFilters}
               products={data.products}
               routerFilters={state.filters}
             />
           </div>
-          <div className="sm:col-span-9">
+          <div className="sm:col-span-10 sm:px-0 px-4 overflow-hidden">
             {/* {HIDE FILTER TOP BAR IN MOBILE} */}
 
             <div className="flex-1 sm:block hidden">
