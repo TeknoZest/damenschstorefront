@@ -215,7 +215,7 @@ export default function Delivery({
                 <div className="flex">
                   <button
                     onClick={() => setIsSelected(false)}
-                    className="btn text-indigo-500 font-xs"
+                    className="btn text-gray-500 hover:text-pink hover:underline font-xs"
                     type="button"
                   >
                     {GENERAL_EDIT}
