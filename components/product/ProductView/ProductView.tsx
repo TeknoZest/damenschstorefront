@@ -415,7 +415,7 @@ export default function ProductView({
                               zoomType="hover" 
                               zoomPreload={true}
                               src={`${image.image}?h=1000&w=600&fm=webp` || IMG_PLACEHOLDER}  
-                              zoomSrc={`${image.image}?h=3000&w=1800&fm=webp` || IMG_PLACEHOLDER}  />
+                              zoomSrc={`${image.image}?h=3000&w=1800&fm=webp` || IMG_PLACEHOLDER} />
                         </div>
                       ) : (
                         <PlayIcon className="h-full w-full object-center object-cover" />
