@@ -34,7 +34,7 @@ function Cart({ cart }: any) {
 
   const mapShippingPlansToItems = (plans?: any, items?: any) => {
     const itemsClone = [...items]
-    return plans.reduce((acc: any, obj: any) => {
+    return plans?.reduce((acc: any, obj: any) => {
       acc?.forEach((cartItem?: any) => {
         const foundShippingPlan = obj.items.find((item: any) => {
           return (
@@ -131,12 +131,12 @@ function Cart({ cart }: any) {
 
   return (
     <div className="bg-white">
-      <main className="max-w-2xl mx-auto sm:pt-16 pt-6 sm:pb-24 pb-0 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h1 className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl uppercase">
+      <main className="max-w-2xl mx-auto sm:pt-4 pt-4 sm:pb-10 pb-0 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h1 className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
           {GENERAL_SHOPPING_CART}
         </h1>
         {!isEmpty && (
-          <form className="relative sm:mt-12 mt-8 lg:grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
+          <form className="relative sm:mt-6 mt-8 lg:grid lg:grid-cols-12 lg:gap-x-4 lg:items-start xl:gap-x-4">
             <section aria-labelledby="cart-heading" className="lg:col-span-7">
               <h2 id="cart-heading" className="sr-only">
                 {ITEMS_IN_YOUR_CART}
@@ -144,35 +144,30 @@ function Cart({ cart }: any) {
 
               <ul
                 role="list"
-                className="border-t border-b border-gray-200 divide-y divide-gray-200"
               >
                 {userCart.lineItems?.map((product: any, productIdx: number) => (
-                  <li key={productIdx} className="flex py-4 sm:py-10">
+                  <li key={productIdx} className="flex py-4 sm:p-3 border border-gray-200 mb-2">
                     <div className="flex-shrink-0">
                       <Image
                         layout="fixed"
                         width={160}
-                        height={160}
+                        height={200}
                         src={`${product.image}?fm=webp&h=200&w=200` || IMG_PLACEHOLDER}
                         alt={product.name}
-                        className="w-16 h-16 rounded-md object-center object-cover sm:w-48 sm:h-48 image"
+                        className="w-16 h-full object-center object-cover sm:w-32 sm:h-full image"
                       ></Image>
-                      {/* <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-16 h-16 rounded-md object-center object-cover sm:w-48 sm:h-48"
-                      /> */}
                     </div>
                     <div className="ml-4 flex-1 flex flex-col justify-between sm:ml-6">
                       <div className="relative sm:pr-9 pr-6 flex justify-between sm:pr-0 h-full">
                         <div className="flex flex-col justify-between h-full">
                           <div>
                             <div className="flex justify-between flex-col">
-                              <h3 className="text-md my-2 sm:my-0">
+                              <h4 className='text-md font-bold text-black mb-2'>{product.brand}</h4>
+                              <h3 className="text-sm my-2 sm:my-0">
                                 <Link href={`/${product.slug}`}>
                                   <a
                                     href={product.slug}
-                                    className="font-medium text-black hover:text-gray-800"
+                                    className="font-normal text-gray-600 hover:text-pink hover:underline text-md sm:text-lg"
                                   >
                                     {product.name}
                                   </a>
@@ -180,17 +175,35 @@ function Cart({ cart }: any) {
                               </h3>
                             </div>
 
-                            <p className="mt-1 text-sm font-bold text-black">
+                            <p className="mt-1 text-md sm:text-lg font-bold text-black">
                               {product.price?.formatted?.withTax}
+                              {product?.listPrice?.raw?.withTax > 0 && product?.listPrice?.raw?.withTax != product?.price?.raw?.withTax &&
+                                <span className='px-2 text-sm line-through font-normal text-red-400'>{product?.listPrice?.formatted?.withTax}</span>
+                              }
                             </p>
+                            <div className='flex mt-2'>
+                              <div className="border border-gray-200 sm:px-4 px-2 text-gray-900 flex flex-row hover:border-gray-700">
+                                <MinusSmIcon
+                                  onClick={() => handleItem(product, 'decrease')}
+                                  className="w-6 cursor-pointer hover:text-pink"
+                                />
+                                <span className="text-md px-6 sm:py-2 py-1">
+                                  {product.qty}
+                                </span>
+                                <PlusSmIcon
+                                  className="w-6 cursor-pointer hover:text-pink"
+                                  onClick={() => handleItem(product, 'increase')}
+                                />
+                              </div>
+                            </div>
                             {product.children?.map(
                               (child: any, idx: number) => {
                                 return (
                                   <div
-                                    className="flex mt-10"
+                                    className="flex mt-3 border p-2"
                                     key={'child' + idx}
                                   >
-                                    <div className="flex-shrink-0 w-12 h-12 border border-gray-200 rounded-md overflow-hidden">
+                                    <div className="flex-shrink-0 w-12 h-12 border border-gray-200 overflow-hidden">
                                       <img
                                         src={child.image}
                                         alt={child.name}
@@ -214,7 +227,7 @@ function Cart({ cart }: any) {
                                         onClick={() =>
                                           handleItem(child, 'delete')
                                         }
-                                        className="-m-2 p-2 inline-flex text-gray-400 hover:text-gray-500"
+                                        className="inline-flex text-gray-600 hover:text-red-500 -my-3 relative -top-3"
                                       >
                                         <span className="sr-only">
                                           {GENERAL_REMOVE}
@@ -234,31 +247,16 @@ function Cart({ cart }: any) {
                             {product.shippingPlan?.shippingSpeed}
                           </p>
                         </div>
-
-                        <div className="mt-0 sm:mt-0 sm:pr-9 pl-2 pr-0">
-                          <div className="border sm:px-4 px-2 text-gray-900 flex flex-row">
-                            <MinusSmIcon
-                              onClick={() => handleItem(product, 'decrease')}
-                              className="w-4 cursor-pointer"
-                            />
-                            <span className="text-md px-2 sm:py-2 py-1">
-                              {product.qty}
-                            </span>
-                            <PlusSmIcon
-                              className="w-4 cursor-pointer"
-                              onClick={() => handleItem(product, 'increase')}
-                            />
-                          </div>
-                        </div>
+                       
                         <div className="absolute top-0 right-0">
                           <button
                             type="button"
                             onClick={() => handleItem(product, 'delete')}
-                            className="-m-2 p-2 inline-flex text-gray-400 hover:text-gray-500"
+                            className="inline-flex text-gray-700 hover:text-red-500 -my-1 relative -top-0"
                           >
                             <span className="sr-only">{GENERAL_REMOVE}</span>
                             <XIconSolid
-                              className="sm:h-5 sm:w-5 h-4 w-4 text-red-400 mt-2"
+                              className="sm:h-5 sm:w-5 h-4 w-4 mt-2"
                               aria-hidden="true"
                             />
                           </button>
@@ -277,7 +275,7 @@ function Cart({ cart }: any) {
             {/* Order summary */}
             <section
               aria-labelledby="summary-heading"
-              className="md:sticky top-0 sm:mt-16 mt-4 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5"
+              className="md:sticky top-0 sm:mt-16 mt-4 bg-white border border-gray-200 rounded-sm px-4 py-6 sm:p-3 lg:p-3 lg:mt-0 lg:col-span-5"
             >
               <h2
                 id="summary-heading"
