@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-// import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
-// import 'react-medium-image-zoom/dist/styles.css'
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 import { Tab } from '@headlessui/react'
@@ -403,74 +401,7 @@ export default function ProductView({
         <div className="lg:max-w-none">
           {/* Product */}
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:items-start">
-             {/* Image gallery */}
-             {/* <Tab.Group as="div" className="flex flex-col-reverse lg:col-span-7">
-              <div className="grid sm:grid-cols-12 grid-cols-1 sm:gap-x-8">
-                <div className='col-span-6'>
-                  <div className="hidden w-full max-w-2xl mx-auto sm:block lg:max-w-none">
-                    <Tab.List className="grid grid-cols-1 gap-6">
-                      {content?.map((image: any, idx) => (
-                        <Tab
-                          key={`${idx}-tab`}
-                        >
-                          {() => (
-                            <>
-                              <span className="sr-only">{image.name}</span>
-                              <span className="relative">
-                                {image.image ? (
-                                  <div className='image-container'>
-                                    <ControlledZoom isZoomed={isZoomedT} onZoomChange={handleZoomChangeT}>
-                                      <img
-                                        src={`${image.image}?h=1000&w=600&fm=webp` || IMG_PLACEHOLDER}                             
-                                        alt={image.name}
-                                        onClick={handleImgLoadT}
-                                        width="500"
-                                      />
-                                    </ControlledZoom>
-                                  </div>
-                                ) : (
-                                  <PlayIcon className="h-full w-full object-center object-cover" />
-                                )}
-                              </span>
-                            </>
-                          )}
-                        </Tab>
-                      ))}
-                    </Tab.List>
-                  </div>
-                </div>
-                <div className='sm:col-span-6'>
-                  <Tab.Panels className="w-full aspect-w-1 aspect-h-1 p-3 sm:p-0 relative">
-                    {content?.map((image: any) => (
-                      <Tab.Panel key={image.name + 'tab-panel'}>
-                        {image.image ? (
-                          <div className='image-container'>
-                           <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange}>
-                                <img
-                                  src={`${image.image}?h=1000&w=600&fm=webp` || IMG_PLACEHOLDER}                             
-                                  alt={image.name}
-                                  onClick={handleImgLoad}
-                                  width="500"
-                                />
-                              </ControlledZoom>
-                          </div>
-                        ) : (
-                          <iframe
-                            width="560"
-                            height="315"
-                            src={image.url}
-                            title={YOUTUBE_VIDEO_PLAYER}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
-                        )}
-                      </Tab.Panel>
-                    ))}
-                  </Tab.Panels>
-                </div>
-              </div>
-            </Tab.Group> */}
+             
             <div className="flex flex-col-reverse lg:col-span-7">
               <div className='grid grid-cols-2 gap-x-8 gap-y-6'>
                 {content?.map((image: any, idx) => (
@@ -480,15 +411,6 @@ export default function ProductView({
                       {image.image ? (
                         <div className='image-container'>
                           <InnerImageZoom fadeDuration={300} fullscreenOnMobile={true} hideHint={true} zoomType="hover" src={`${image.image}?h=1000&w=600&fm=webp` || IMG_PLACEHOLDER}  zoomSrc={`${image.image}?h=3000&w=1800&fm=webp` || IMG_PLACEHOLDER}  />
-
-                          {/* <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange}>
-                            <img
-                              src={`${image.image}?h=1000&w=600&fm=webp` || IMG_PLACEHOLDER}                             
-                              alt={image.name}
-                              onClick={handleImgLoad}
-                              width="500"
-                            />
-                          </ControlledZoom> */}
                         </div>
                       ) : (
                         <PlayIcon className="h-full w-full object-center object-cover" />

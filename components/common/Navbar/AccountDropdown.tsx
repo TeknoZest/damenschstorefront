@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function Account({ config, title }: any) {
   return (
     <Menu as="div" className="px-1 w-20 flow-root">
-      <Menu.Button className="group grid grid-cols-1 items-center text-center align-center justify-center flex-col"  aria-label="My Account">
+      <Menu.Button className="group grid grid-cols-1 items-center text-center align-center justify-center flex-col mx-auto"  aria-label="My Account">
         <UserIcon
           className="flex-shrink-0 h-6 w-6 block text-gray-400 group-hover:text-gray-500 mx-auto"
           aria-hidden="true"  aria-label="My Account"

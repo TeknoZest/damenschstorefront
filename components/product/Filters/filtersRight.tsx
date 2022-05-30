@@ -15,7 +15,7 @@ export default function FiltersRightOpen({
   return (
     <div className="bg-transparent">
       {/* Mobile filter dialog */}
-      <div className="ml-auto relative max-w-xs w-full h-full bg-white border-r py-4 pb-6 flex flex-col overflow-y-auto">
+      <div className="ml-auto relative max-w-xs w-full h-full bg-white border-r py-3 pb-4 flex flex-col overflow-x-hidden overflow-y-auto">
         <div className="px-0 flex items-center justify-between">
           <h2 className="text-md font-medium text-black uppercase">
             {GENERAL_FILTER_TITLE}
@@ -23,7 +23,7 @@ export default function FiltersRightOpen({
         </div>
 
         {/* Filters */}
-        <form className="mt-4 pr-3">
+        <form className="mt-4 pr-0">
           {products.filters?.map((section: any) => (
             <div
               key={section.name}
@@ -37,7 +37,7 @@ export default function FiltersRightOpen({
                     </span>
                   </div>
                 </h3>
-                <div className="pt-3">
+                <div className="pt-3 pr-4">
                   <div className="space-y-3">
                     <FilterList
                       handleFilters={handleFilters}

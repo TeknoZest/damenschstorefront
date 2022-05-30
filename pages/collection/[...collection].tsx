@@ -239,7 +239,7 @@ export default function CollectionPage(props: any) {
         <h2>{props.description}</h2>
       </div>
 
-      <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 overflow-hidden">
+      <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 sm:gap-0 overflow-hidden">
         {props.allowFacets && (
           <>
             {/* {MOBILE FILTER PANEL SHOW ONLY IN MOBILE} */}

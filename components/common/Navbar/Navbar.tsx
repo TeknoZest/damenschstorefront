@@ -436,7 +436,7 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
 
                 <div className="px-1 w-20 flow-root">
                   <button
-                    className="relative group grid grid-cols-1 items-center text-center align-center justify-center flex-col"
+                    className="relative group grid grid-cols-1 items-center text-center align-center justify-center flex-col mx-auto"
                     onClick={openWishlist}
                   >
                     <HeartIcon
@@ -456,7 +456,7 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
 
                 <div className="px-1 w-20 flow-root">
                   <button
-                    className="group grid relative grid-cols-1 items-center text-center align-center justify-center flex-col"
+                    className="group grid relative grid-cols-1 items-center text-center align-center justify-center flex-col mx-auto"
                     onClick={openCart}
                   >
                     <ShoppingBagIcon

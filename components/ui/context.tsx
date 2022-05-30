@@ -32,7 +32,9 @@ export interface State {
   orderId: string
   userIp: string
 }
-
+interface Props {
+  children:any
+}
 const initialState = {
   displaySidebar: false,
   displayDropdown: false,
@@ -277,7 +279,7 @@ function uiReducer(state: State, action: Action) {
   }
 }
 
-export const UIProvider: FC = (props) => {
+export const UIProvider: FC = (props):any => {
   const Router = useRouter()
 
   const [state, dispatch] = React.useReducer(uiReducer, initialState)
@@ -521,7 +523,7 @@ export const useUI = () => {
   return context
 }
 
-export const ManagedUIContext: FC = ({ children }) => (
+export const ManagedUIContext: FC<Props> = ({ children }):any => (
   <UIProvider>
     <ThemeProvider>{children}</ThemeProvider>
   </UIProvider>

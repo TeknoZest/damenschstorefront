@@ -158,18 +158,18 @@ const SearchProductCard: FC<Props> = ({ product }) => {
   }
 
   const buttonConfig = buttonTitle()
-
+  console.log("Product:"+ JSON.stringify(product));
   return (
     <div className="">
-      <div key={product.id} className="group relative">
+      <div key={product.id} className="relative">
         <Link
           passHref
           href={`/${currentProductData.link}`}
           key={'data-product' + currentProductData.link}
         >
           <a href={currentProductData.link}>
-            <div className="relative overflow-hidden bg-gray-200 aspect-w-1 aspect-h-1 group-hover:opacity-75">
-              <div className='image-container'>
+            <div className="relative overflow-hidden bg-gray-200 aspect-w-1 aspect-h-1 whishlist-info">
+              <div className='image-container hover:opacity-75'>
                   <Image 
                       src={currentProductData.image || IMG_PLACEHOLDER}
                       alt={product.name}
@@ -180,50 +180,55 @@ const SearchProductCard: FC<Props> = ({ product }) => {
                   </Image>
               </div>
               {buttonConfig.isPreOrderEnabled && (
-                <div className="bg-yellow-400 absolute py-1 px-1 rounded-sm top-2">
+                <div className="bg-yellow-400 text-white absolute text-xs py-1 pr-5 pl-2 rounded-sm top-4 badge-corner-pre-order">
                   {BTN_PRE_ORDER}
                 </div>
               )}
               {buttonConfig.isNotifyMeEnabled && (
-                <div className="bg-red-400 text-white absolute py-1 px-1 rounded-sm top-2">
+                <div className="bg-pink text-white absolute text-xs py-1 pr-5 pl-2 rounded-sm top-4 badge-corner">
                   {BTN_NOTIFY_ME}
                 </div>
               )}
-              {isInWishList ? (
-                <span className="text-gray-900">
-                  {ALERT_SUCCESS_WISHLIST_MESSAGE}
-                </span>
-              ) : (
+              <div className='whishlist-on-hover'>
+                {isInWishList ? (
+                  <span className="text-gray-900">
+                    {ALERT_SUCCESS_WISHLIST_MESSAGE}
+                  </span>
+                ) : (
 
-                <button
-                    className="absolute right-2 bottom-0 z-99 add-wishlist"
-                    onClick={handleWishList}
-                >
-                    <HeartIcon
-                        className="flex-shrink-0 h-8 w-8 z-50 text-gray-800 hover:text-gray-500 rounded-3xl p-1 opacity-80"
-                        aria-hidden="true"
-                />
-                    <span className="ml-2 text-sm font-medium text-gray-700 hover:text-red-800"></span>
-                    <span className="sr-only">f</span>
-                </button>            
-              )}   
+                  <button
+                      className="absolute right-2 bottom-0 z-99 add-wishlist w-full text-center bg-white border border-gray-300 text-black hover:border-gray-800"
+                      onClick={handleWishList}
+                  >
+                      <HeartIcon
+                          className="flex-shrink-0 inline-block h-8 w-8 z-50 rounded-3xl p-1 opacity-80"
+                          aria-hidden="true"
+                  />
+                      <span className="text-sm font-medium">Wishlist</span>
+                      <span className="sr-only"></span>
+                  </button>            
+                )}  
+              </div> 
             </div>
           </a>
         </Link>
 
-        <div className="sm:pt-4 pt-4 text-left">
-          <div className='w-full border-b mb-2'>
+        <div className="sm:pt-2 pt-2 text-left">         
           {hasColorVariation ? (
-            <AttributeSelector
-              attributes={product.variantProductsAttributeMinimal}
-              onChange={handleVariableProduct}
-              link={currentProductData.link}
-            />
+             <div className='w-full border-b mb-2'>
+                <AttributeSelector
+                  attributes={product.variantProductsAttributeMinimal}
+                  onChange={handleVariableProduct}
+                  link={currentProductData.link}
+                />
+            </div>
           ) : (
-            <div className="sm:h-5 sm:w-5 h-5 w-5 sm:mr-2 mr-1 mt-1 inline-block" />
+            <div className='w-full border-b border-white mb-2'>
+              <div className="sm:h-5 sm:w-5 h-5 w-5 sm:mr-2 mr-1 mt-1 inline-block" />
+            </div>
           )}  
-          </div>
-          <h3 className="truncate sm:text-sm text-xs font-medium text-black">
+          <h4 className='truncate sm:text-sm text-xs font-semibold text-black uppercase mb-2'>{product.brand}</h4>
+          <h3 className="truncate sm:text-sm text-xs font-normal text-gray-700">
             <Link href={`/${currentProductData.link}`}>
               <a href={`/${currentProductData.link}`}>{product.name}</a>
             </Link>

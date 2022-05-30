@@ -4,7 +4,7 @@ import cn from 'classnames'
 import s from './SidebarLayout.module.css'
 import { GENERAL_BACK, GENERAL_CLOSE } from '@components/utils/textVariables'
 
-type ComponentProps = { className?: string } & (
+type ComponentProps = { className?: string, children:any } & (
   | { handleClose: () => any; handleBack?: never }
   | { handleBack: () => any; handleClose?: never }
 )

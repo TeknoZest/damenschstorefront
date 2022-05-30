@@ -11,8 +11,8 @@
 }
 
 .add-wishlist{
-  bottom: -25px!important;
-  padding: 6px;
+  bottom: 0px!important;
+  padding: 0px;
   text-align: center;
   right: 0!important;
 }
@@ -27,4 +27,38 @@
 
 .max-w-md{
   max-width: 29.2rem!important;
+}
+
+.whishlist-on-hover{
+  display: none;
+  opacity: 0;
+}
+
+.whishlist-info:hover .whishlist-on-hover{
+  display: block;
+  opacity: 1;
+}
+
+.badge-corner:after {
+  content: "";
+  position: absolute;
+  border-color: rgba(255,63,108,.5) transparent rgba(255,63,108,.5) rgba(255,63,108,.8);
+  border-style: solid;
+  border-width: 12px;
+  left: 100%;
+  width: 0;
+  height: 0;
+  top: 0;
+}
+
+.badge-corner-pre-order:after {
+  content: "";
+  position: absolute;
+  border-color: rgba(251, 191, 36,.5) transparent rgba(251, 191, 36,.5) rgba(251, 191, 36 ,.8);
+  border-style: solid;
+  border-width: 12px;
+  left: 100%;
+  width: 0;
+  height: 0;
+  top: 0;
 }

@@ -45,7 +45,8 @@ interface Props {
   pageProps: {
     pages?: Page[]
     categories: Category[]
-  }
+  },
+  children:any,
   nav: []
   footer: []
   isLocationLoaded: boolean

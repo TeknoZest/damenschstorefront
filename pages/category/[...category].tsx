@@ -344,7 +344,7 @@ function CategoryPage({ category, products }: any) {
             </div>
         }
         {products.total>0 &&
-            <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 w-full mx-auto overflow-hidden sm:border-t sm:border-gray-200">
+            <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 sm:gap-0 w-full mx-auto overflow-hidden sm:border-t sm:border-gray-200">
               {!!products && (
                 <>
                   {/* {MOBILE FILTER PANEL SHOW ONLY IN MOBILE} */}

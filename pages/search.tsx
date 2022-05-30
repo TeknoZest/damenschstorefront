@@ -292,7 +292,7 @@ function Search({ query, setEntities, recordEvent }: any) {
             {GENERAL_CATALOG} <span className='font-normal text-gray-500 sm:text-md text-sm'> {' -'} {data.products.total}{' '}{RESULTS}</span>
           </h1>
         </div>
-        <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 md:w-full mx-auto overflow-hidden sm:border-t sm:border-gray-200 sm:pt-0">
+        <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 sm:gap-0 md:w-full mx-auto overflow-hidden sm:border-t sm:border-gray-200 sm:pt-0">
           {/* {MOBILE FILTER PANEL SHOW ONLY IN MOBILE} */}
 
           <div className="sm:col-span-3 sm:hidden flex flex-col">

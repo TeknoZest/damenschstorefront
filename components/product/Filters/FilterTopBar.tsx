@@ -41,7 +41,7 @@ export default function FiltersRightOpen({
   return (
     <div className="bg-transparent">
       {/* Mobile filter dialog */}
-      <div className="max-w-3xl pl-4 text-center lg:max-w-7xl">
+      <div className="max-w-3xl text-center lg:max-w-7xl">
         <section
           aria-labelledby="filter-heading"
           className="border-b mb-6 py-1"
@@ -54,9 +54,8 @@ export default function FiltersRightOpen({
             <h2 id="filter-heading" className="sr-only">
               {GENERAL_FILTER_TITLE}
             </h2>
-            <div className="relative col-start-1 row-start-1 py-3">
-              <div className="max-w-7xl mx-auto flex space-x-6 divide-x divide-gray-200 text-sm px-0 sm:px-0 lg:px-0">
-                
+            <div className="relative col-start-1 row-start-1 py-3 pl-4">
+              <div className="max-w-7xl mx-auto flex space-x-6 divide-x divide-gray-200 text-sm px-0 sm:px-0 lg:px-0">                
                 <div className="pl-0">
                   <button
                     onClick={clearAll}
