@@ -397,7 +397,7 @@ export default function ProductView({
           <BreadCrumbs items={breadcrumbs} currentProduct={product} />
         )}
       </div>
-      <main className="sm:pt-8">
+      <main className="sm:pt-5">
         <div className="lg:max-w-none">
           {/* Product */}
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:items-start">             

@@ -36,7 +36,7 @@ export default function CategoryGrid({
           currentNumber={products.results.length}
           component={
             <div
-              className={`grid grid-cols-2 md:grid-cols-6 ${
+              className={`border-gray-100 gap-y-3 grid grid-cols-2 sm:mx-0 md:grid-cols-6 ${
                 products.results.length < 7
                   ? `lg:grid-cols-6`
                   : 'lg:grid-cols-6'

@@ -36,7 +36,7 @@ export default function Grid({
           currentNumber={products.results.length}
           component={
             <div
-              className={`border-gray-100 gap-x-8 gap-y-4 grid grid-cols-2 sm:mx-0 md:grid-cols-5 ${
+              className={`border-gray-100 gap-x-8 gap-y-8 grid grid-cols-2 sm:mx-0 md:grid-cols-5 ${
                 products.results.length < 6
                   ? `lg:grid-cols-5`
                   : 'lg:grid-cols-5'

@@ -236,6 +236,9 @@ const SearchProductCard: FC<Props> = ({ product }) => {
 
           <p className="sm:mt-2 mt-1 font-bold text-black">
             {product?.price?.formatted?.withTax}
+            {product?.listPrice?.raw?.withTax > 0 && product?.listPrice?.raw?.withTax != product?.price?.raw?.withTax &&
+              <span className='px-2 text-sm line-through font-normal text-red-400'>{product?.listPrice?.formatted?.withTax}</span>
+            }
           </p>
                   
         </div>
