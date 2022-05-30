@@ -418,7 +418,7 @@ export default function ProductView({
                               zoomSrc={`${image.image}?h=3000&w=1800&fm=webp` || IMG_PLACEHOLDER} />
                         </div>
                       ) : (
-                        <PlayIcon className="h-full w-full object-center object-cover" />
+                        <div className='w-10 h-10'></div>
                       )}
                     </span>
                   </div>
