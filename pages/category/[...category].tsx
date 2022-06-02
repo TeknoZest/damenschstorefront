@@ -326,7 +326,7 @@ function CategoryPage({ category, products }: any) {
              Showing {products.total} {RESULTS} for 
             </h4>
           )}
-          <h1 className="sm:text-2xl text-xl font-bold tracking-tight text-gray-900">
+          <h1 className="sm:text-2xl text-xl font-bold tracking-tight text-gray-900 capitalize">
             {category.name}
           </h1>
           <h2>{category.description}</h2>
