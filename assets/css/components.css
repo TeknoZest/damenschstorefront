@@ -55,3 +55,7 @@
 .max-w-md {
   max-width: 29rem!important;
 }
+
+.z-999{
+  z-index: 9999999!important;
+}

@@ -335,15 +335,15 @@ function CategoryPage({ category, products }: any) {
         {category && category.subCategories && category.subCategories.length > 0  &&
           <div className="sm:px-0 grid grid-cols-1 sm:grid-cols-6">
             <div className="sm:col-span-12 py-2">
-              <div className="sm:px-0 grid grid-cols-1 text-center sm:grid-cols-6 bg-gray-50 border p-2">
+              <div className="sm:px-0 grid grid-cols-2 text-center sm:grid-cols-7 gap-2">
                 {
                   category && category.subCategories && category.subCategories.length ? (
                     category.subCategories.map((subcateg: any, idx: number) => {
                       return (
                         <Link href={'/' + subcateg.link} key={idx}>
-                          <div className="flex justify-center text-center items-left flex-col px-2 cursor-pointer">
-                            <h4 className="text-gray-900 font-semibold text-md underline hover:text-orange">
-                              <img src='/assets/images/category.svg' className='inline-block' />{subcateg.name}
+                          <div className="flex justify-center text-center items-left flex-col px-2 cursor-pointer bg-white border p-2">
+                            <h4 className="text-gray-900 font-semibold text-md capitalize hover:text-orange truncate">
+                              <img src='/assets/images/category.svg' className='inline-block pr-1' /> {subcateg.name}
                             </h4>
                           </div>
                         </Link>
