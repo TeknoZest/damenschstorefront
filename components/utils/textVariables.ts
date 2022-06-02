@@ -3,16 +3,16 @@ import { useRouter } from 'next/router'
 //USE THIS AS TEMPLATE
 const content: any = {
   'en-US': {
-    GENERAL_CHECKOUT: 'Checkout en-US',
+    GENERAL_CHECKOUT: 'Checkout',
   },
   es: {
-    GENERAL_CHECKOUT: 'Checkout es',
+    GENERAL_CHECKOUT: 'Checkout',
   },
   'en-GB': {
-    GENERAL_CHECKOUT: 'Checkout en-GB',
+    GENERAL_CHECKOUT: 'Checkout',
   },
   'es-ES': {
-    GENERAL_CHECKOUT: 'Checkout es-ES',
+    GENERAL_CHECKOUT: 'Checkout',
   },
 }
 
@@ -114,6 +114,7 @@ export const GENERAL_SUBTOTAL = 'Subtotal'
 export const GENERAL_TAXES = 'Taxes'
 export const CALCULATED_AT_CHECKOUT = 'Calculated at checkout'
 export const GENERAL_SHIPPING = 'Shipping'
+export const GENERAL_DELIVERY = 'Delivery'
 export const GENERAL_DISCOUNT = 'Discount'
 export const GENERAL_CHECKOUT = 'Checkout'
 export const GENERAL_OR_TEXT = 'or'
@@ -308,7 +309,11 @@ export const ALL_CATEGORY = 'all categories'
 export const RESULTS = 'results'
 export const SHOP_BY_CATEGORY = 'Shop by Category'
 export const SHOP_BY_COLLECTION = 'Shop by Collection'
-export const SHOP_BY_LIFESTYLRE = 'Shop by Lifestyle'
-export const PRODUCTS_AVAILABLE = 'Products available'
 export const GENERAL_COLOUR = 'Colour'
 export const GENERAL_SIZE = 'Size'
+export const SHOP_BY_LIFESTYLRE = 'Shop by Lifestyle'
+export const PRODUCTS_AVAILABLE = 'Products available'
+export const PRODUCT_IN_STOCK = 'In Stock'
+export const PRODUCT_OUT_OF_STOCK='Out Of Stock'
+export const PRODUCT_AVAILABILITY='Availability'
+export const SLUG_TYPE_MANUFACTURER = 'Manufacturer'

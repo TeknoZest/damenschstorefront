@@ -16,10 +16,10 @@ export default function InlineList({
 
   return (
     <>
-      <h3 className="text-sm text-gray-800 font-medium text-left">{label}</h3>
+      <h3 className="text-sm text-gray-800 font-medium text-left border-t border-gray-200 pt-3">{label}</h3>
       <RadioGroup value={'ring-gray-700'} onChange={() => {}} className="mt-2">
         <RadioGroup.Label className="sr-only">{label}</RadioGroup.Label>
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2">
           {items.map((item: any, idx: any) => {
             const path = generateLink(fieldCode, item.fieldValue)
             return (
@@ -31,12 +31,12 @@ export default function InlineList({
                   classNames(
                     active && checked ? 'ring ring-offset-1' : '',
                     !active && checked ? 'ring-2' : '',
-                    '-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none'
+                    '-m-0.5 relative p-0.5 border border-gray-400 border-opacity-1 rounded-full flex items-center justify-center cursor-pointer focus:outline-none'
                   )
                 }
               >
                 <RadioGroup.Label as="p" className="sr-only">
-                  {item.fieldName}
+                  {item.fieldName} {item.value}
                 </RadioGroup.Label>
                 <Link href={`/${path}`} passHref>
                   <a
@@ -44,7 +44,7 @@ export default function InlineList({
                     onClick={() => handleChange(item.fieldvalue)}
                     className={classNames(
                       item.fieldvalue,
-                      'h-8 w-8 border border-black border-opacity-10 rounded-full'
+                      'h-6 w-6 rounded-full'
                     )}
                   />
                 </Link>

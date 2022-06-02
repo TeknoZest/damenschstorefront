@@ -1,3 +1,39 @@
 .fit {
   min-height: calc(100vh - 88px);
 }
+
+.image-container.pdp span{
+  padding: 0!important;
+}
+
+.text-orange{
+  color: #EC5E28!important;
+}
+
+.z-99{
+  z-index: 999!important;
+}
+
+.bg-orange{
+  background-color: #EC5E28!important;
+}
+
+.border-orange{
+  border-color: #EC5E28!important;
+}
+
+.bg-orange:hover{
+  background-color: #c73f0a!important;
+}
+
+.hover\:bg-orange:hover {
+  background-color: #ff5b1d!important;
+}
+
+.hover\:border-orange:hover {
+  border-color: #EC5E28!important;
+}
+
+.hover\:text-orange:hover {
+  color: #EC5E28!important;
+}

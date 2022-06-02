@@ -288,3 +288,25 @@
 .h-full {
   height: 100% !important;
 }
+
+
+
+.text-orange{
+  color: #EC5E28!important;
+}
+
+.z-99{
+  z-index: 999!important;
+}
+
+.bg-orange{
+  background-color: #EC5E28!important;
+}
+
+.border-orange{
+  border-color: #EC5E28!important;
+}
+
+.bg-orange:hover{
+  background-color: #c73f0a!important;
+}

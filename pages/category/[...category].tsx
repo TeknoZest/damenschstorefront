@@ -9,6 +9,7 @@ const ProductFilterRight = dynamic(() => import('@components/product/Filters/fil
 const ProductMobileFilters = dynamic(() => import('@components/product/Filters'))
 const ProductFiltersTopBar = dynamic(() => import('@components/product/Filters/FilterTopBar'))
 const ProductGridWithFacet = dynamic(() => import('@components/product/Grid'))
+const BreadCrumbs = dynamic(() => import('@components/ui/BreadCrumbs'))
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -285,10 +286,15 @@ function CategoryPage({ category, products }: any) {
       : products
 
   return (
-    <div className="bg-white">
+    <div className="bg-white sm:w-3/4 w-full mx-auto">
       {/* Mobile menu */}
       <main className="pb-0">
-        <div className="sm:max-w-7xl sm:px-7 mx-auto sm:mt-4 mt-0 flex justify-center items-center w-full">
+        <div className="pt-0 sm:pt-0 sm:px-0 px-3">
+          {category.breadCrumbs && (
+            <BreadCrumbs items={category.breadCrumbs} currentProduct={category} />
+          )}
+        </div>  
+        <div className="sm:px-0 sm:mt-4 mt-4 flex justify-center items-center">
           {
             category && category.images && category.images.length ? (
               <Swiper navigation={true} loop={true} className="mySwiper">
@@ -314,55 +320,50 @@ function CategoryPage({ category, products }: any) {
             )
           }
         </div>
-        <div className="text-center pt-6 mb-4 px-4 sm:px-6 lg:px-8">
-          <h1 className="sm:text-4xl text-2xl font-extrabold tracking-tight text-gray-900">
+        <div className="pt-0 mb-4 px-4 sm:px-0 lg:px-0">
+         {!!products && (
+            <h4 className="text-sm mt-0 font-medium tracking-tight text-gray-500 sm:h-6">
+             Showing {products.total} {RESULTS} for 
+            </h4>
+          )}
+          <h1 className="sm:text-2xl text-xl font-bold tracking-tight text-gray-900">
             {category.name}
           </h1>
           <h2>{category.description}</h2>
-          {!!products && (
-            <h1 className="sm:text-xl text-md mt-2 font-bold tracking-tight text-gray-500">
-              {products.total}{' '}{RESULTS}
-            </h1>
-          )}
+          
         </div>
-        <div className="sm:max-w-7xl sm:px-7 mx-auto grid grid-cols-1 sm:grid-cols-12">
-          <div className="sm:col-span-12 border-t border-gray-200 py-2">
-            <div className="flex w-full text-center align-center justify-center">
-              {
-                category && category.subCategories && category.subCategories.length ? (
-                  category.subCategories.map((subcateg: any, idx: number) => {
-                    return (
-                      <Link href={'/' + subcateg.link} key={idx}>
-                        <div className="flex justify-center text-center items-center flex-col px-2 cursor-pointer">
-                          <Image
-                            layout='fixed'
-                            width={80}
-                            height={80}
-                            className="h-8 w-8 sm:h-20 sm:w-20 rounded-full image"
-                            src={subcateg.image || IMG_PLACEHOLDER}
-                            alt={subcateg.name}
-                          ></Image>
-                          <h4 className="min-h-40px text-gray-900 font-semibold text-sm">
-                            {subcateg.name}
-                          </h4>
-                        </div>
-                      </Link>
-                    )
-                  })
-                ) : (
-                  <></>
-                )
-              }
+        {category && category.subCategories && category.subCategories.length &&
+          <div className="sm:px-0 grid grid-cols-1 sm:grid-cols-6">
+            <div className="sm:col-span-12 py-2">
+              <div className="flex w-full text-left align-left justify-start bg-gray-50 border p-2">
+                {
+                  category && category.subCategories && category.subCategories.length ? (
+                    category.subCategories.map((subcateg: any, idx: number) => {
+                      return (
+                        <Link href={'/' + subcateg.link} key={idx}>
+                          <div className="flex justify-center text-left items-left flex-col px-2 cursor-pointer">
+                            <h4 className="text-gray-900 font-semibold text-md underline hover:text-orange">
+                              {subcateg.name}
+                            </h4>
+                          </div>
+                        </Link>
+                      )
+                    })
+                  ) : (
+                    <></>
+                  )
+                }
+              </div>
             </div>
           </div>
-        </div>
+        }
 
-        <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 max-w-7xl mx-auto overflow-hidden sm:px-6 lg:px-8">
+        <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 overflow-hidden sm:px-0 lg:px-0">
           {!!products && (
             <>
               {/* {MOBILE FILTER PANEL SHOW ONLY IN MOBILE} */}
 
-              <div className="sm:col-span-3 sm:hidden flex flex-col">
+              <div className="sm:col-span-2 sm:hidden flex flex-col">
                 <ProductMobileFilters
                   handleFilters={handleFilters}
                   products={products}
@@ -372,14 +373,14 @@ function CategoryPage({ category, products }: any) {
                   routerSortOption={state.sortBy}
                 />
               </div>
-              <div className="sm:col-span-3 sm:block hidden">
+              <div className="sm:col-span-2 sm:block hidden">
                 <ProductFilterRight
                   handleFilters={handleFilters}
                   products={productDataToPass}
                   routerFilters={state.filters}
                 />
               </div>
-              <div className="sm:col-span-9">
+              <div className="sm:col-span-10">
                 {/* {HIDE FILTER TOP BAR IN MOBILE} */}
 
                 <div className="flex-1 sm:block hidden">

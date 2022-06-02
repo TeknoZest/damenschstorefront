@@ -13,9 +13,9 @@ interface Props {
 }
 
 const DEFAULT_COLOR_SCHEME = {
-  bgColor: 'bg-indigo-600',
-  hoverBgColor: 'bg-indigo-500',
-  focusRingColor: 'ring-indigo-500',
+  bgColor: 'bg-orange',
+  hoverBgColor: 'bg-orange',
+  focusRingColor: 'ring-red-500',
 }
 
 const DefaultButton: FC<Props> = ({
@@ -48,7 +48,7 @@ const DefaultButton: FC<Props> = ({
     <button
       onClick={handleAction}
       type="button"
-      className={`xs:max-w-xs flex-1 ${bgColor} border border-transparent rounded-md sm:py-3 py-1 sm:px-8 px-1 flex items-center justify-center font-medium text-white hover:${hoverBgColor} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:${focusRingColor} sm:w-full ${className}`}
+      className={`xs:max-w-xs flex-1 ${bgColor} border-2 border-black rounded-sm sm:py-3 py-1 sm:px-8 px-1 flex items-center justify-center font-bold text-black hover:text-white hover:${hoverBgColor} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:${focusRingColor} sm:w-full ${className}`}
     >
       {isLoading ? <LoadingDots /> : title}
     </button>

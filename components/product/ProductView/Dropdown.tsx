@@ -100,20 +100,22 @@ export default function Dropdown({
   }
 
   return (
-    <Listbox value={selected} onChange={handleOnChange} disabled={isDisabled}>
+    <>
+      <div className='border-t border-gray-200 w-full py-2'>
+      <Listbox value={selected} onChange={handleOnChange} disabled={isDisabled}>
       <Listbox.Label
         className={`${
           isDisabled ? 'opacity-40' : ''
-        } block text-sm font-medium text-gray-800 text-left`}
+        } block text-md font-medium py-2 text-gray-800 text-left`}
       >
-        {label}
+        {label} {' : '} <span className='uppercase font-bold text-xs text-black'>{selected.currentAttribute}</span>
       </Listbox.Label>
       <div className="mt-1 relative">
         <Listbox.Button
           disabled
           className={`${
             isDisabled ? 'opacity-40' : ''
-          } relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
+          } relative w-full sm:w-6/12 bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
         >
           <span className="flex items-center">
             <span
@@ -193,5 +195,7 @@ export default function Dropdown({
         </Transition>
       </div>
     </Listbox>
+      </div>
+    </>
   )
 }
