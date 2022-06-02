@@ -51,3 +51,7 @@
   background-color: transparent;
   padding: 2px 5px;
 }
+
+.max-w-md {
+  max-width: 29rem!important;
+}

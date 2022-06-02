@@ -69,14 +69,14 @@ export default function PromotionInput() {
               placeholder={APPLY_PROMOTION}
               onChange={handleChange}
               value={value}
-              className="mb-2 mt-2 appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 "
+              className="mb-2 mt-2 appearance-none py-3 min-w-0 w-full bg-white border border-gray-300 rounded-sm shadow-sm py-2 px-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 "
             />
 
             <Button
               action={async () => await handleSubmit('apply')}
               type="button"
               title={GENERAL_APPLY_TEXT}
-              className={`max-w-xs flex-1 ml-5 bg-indigo-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center font-medium text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-600 sm:w-full`}
+              className={`max-w-xs flex-1 ml-5 bg-orange border border-black rounded-sm py-2 px-4 flex items-center justify-center font-medium hover:text-white text-black hover:bg-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-600 sm:w-full`}
             />
           </div>
         </div>

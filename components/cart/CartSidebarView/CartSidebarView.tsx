@@ -26,7 +26,6 @@ import useTranslation, {
   GENERAL_CONTINUE_SHOPPING,
   GENERAL_OR_TEXT,
 } from '@components/utils/textVariables'
-import { Guid } from '@commerce/types'
 
 const CartSidebarView: FC = () => {
   const { closeSidebar, setCartItems, cartItems, basketId } = useUI()
@@ -94,7 +93,7 @@ const CartSidebarView: FC = () => {
     <Transition.Root show={true} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 overflow-hidden z-50"
+        className="fixed inset-0 overflow-hidden z-99"
         onClose={handleClose}
       >
         <div className="absolute inset-0 overflow-hidden">
@@ -107,10 +106,10 @@ const CartSidebarView: FC = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="" />
+            <Dialog.Overlay className="w-full h-screen" onClick={handleClose} />
           </Transition.Child>
 
-          <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+          <div className="fixed inset-y-0 right-0 pl-0 max-w-full flex">
             <Transition.Child
               as={Fragment}
               enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -181,7 +180,7 @@ const CartSidebarView: FC = () => {
 
                                 <div className="ml-4 flex-1 flex flex-col">
                                   <div>
-                                    <div className="flex justify-between font-medium text-gray-900">
+                                    <div className="flex justify-between font-sm font-semibold text-gray-900">
                                       <h3 onClick={handleClose}>
                                         <Link href={`/${product.slug}`}>
                                           {product.name}
@@ -196,38 +195,34 @@ const CartSidebarView: FC = () => {
                                   <div className="flex-1 flex items-end justify-between text-sm">
                                     {/* <p className="text-gray-500">Qty {product.quantity}</p> */}
 
-                                    {
-                                      (product.parentProductId === "" || product.parentProductId === Guid.empty) && (
-                                        <div className="flex justify-between w-full">
-                                          <button
-                                            type="button"
-                                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                                            onClick={() =>
-                                              handleItem(product, 'delete')
-                                            }
-                                          >
-                                            {GENERAL_REMOVE}
-                                          </button>
-                                          <div className="border px-4 text-gray-900 flex flex-row">
-                                            <MinusSmIcon
-                                              onClick={() =>
-                                                handleItem(product, 'decrease')
-                                              }
-                                              className="w-4 cursor-pointer"
-                                            />
-                                            <span className="text-md px-2 py-2">
-                                              {product.qty}
-                                            </span>
-                                            <PlusSmIcon
-                                              className="w-4 cursor-pointer"
-                                              onClick={() =>
-                                                handleItem(product, 'increase')
-                                              }
-                                            />
-                                          </div>
-                                        </div>
-                                      )
-                                    }
+                                    <div className="flex justify-between w-full">
+                                      <button
+                                        type="button"
+                                        className="font-medium text-red-300 hover:text-red-500"
+                                        onClick={() =>
+                                          handleItem(product, 'delete')
+                                        }
+                                      >
+                                        {GENERAL_REMOVE}
+                                      </button>
+                                      <div className="border px-4 text-gray-900 flex flex-row">
+                                        <MinusSmIcon
+                                          onClick={() =>
+                                            handleItem(product, 'decrease')
+                                          }
+                                          className="w-4 cursor-pointer"
+                                        />
+                                        <span className="text-md px-2 py-2">
+                                          {product.qty}
+                                        </span>
+                                        <PlusSmIcon
+                                          className="w-4 cursor-pointer"
+                                          onClick={() =>
+                                            handleItem(product, 'increase')
+                                          }
+                                        />
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -239,16 +234,11 @@ const CartSidebarView: FC = () => {
                                         <div className='image-container'>
                                           <Image
                                             layout='fill'
-                                            src={child.image}
+                                            src={`${child.image}?w=100&h=100&fm=webp`}
                                             alt={child.name}
                                             className="w-full h-full object-center object-cover image"
                                           ></Image>
                                         </div>
-                                        {/* <img
-                                          src={child.image}
-                                          alt={child.name}
-                                          className="w-full h-full object-center object-cover"
-                                        /> */}
                                       </div>
                                       <div className="ml-4 flex-1 flex flex-col">
                                         <div>
@@ -259,36 +249,25 @@ const CartSidebarView: FC = () => {
                                               </Link>
                                             </h3>
                                             <p className="ml-4">
-                                              {child.price?.formatted?.withTax > 0 ? child.price?.formatted?.withTax : ""}
+                                              {child.price?.formatted?.withTax}
                                             </p>
                                           </div>
                                           {/* <p className="mt-1 text-sm text-gray-500">{product.color}</p> */}
                                         </div>
                                       </div>
+                                      <div className="flex-1 flex items-end justify-end text-sm">
+                                        {/* <p className="text-gray-500">Qty {product.quantity}</p> */}
 
-                                      {
-                                        (child.parentProductId === "" || child.parentProductId === Guid.empty) ? (
-                                          <div className="flex-1 flex items-end justify-end text-sm">
-                                            {/* <p className="text-gray-500">Qty {product.quantity}</p> */}
-
-                                            <button
-                                              type="button"
-                                              className="font-medium text-indigo-600 hover:text-indigo-500"
-                                              onClick={() =>
-                                                handleItem(child, GENERAL_DELETE)
-                                              }
-                                            >
-                                              {GENERAL_REMOVE}
-                                            </button>
-                                          </div>
-                                        ) : (
-                                          <div className="border px-4 text-gray-900 flex flex-row">
-                                            <span className="text-md px-2 py-2">
-                                              {child.qty}
-                                            </span>
-                                          </div>
-                                        )
-                                      }
+                                        <button
+                                          type="button"
+                                          className="font-medium text-indigo-600 hover:text-indigo-500"
+                                          onClick={() =>
+                                            handleItem(child, GENERAL_DELETE)
+                                          }
+                                        >
+                                          {GENERAL_REMOVE}
+                                        </button>
+                                      </div>
                                     </div>
                                   )
                                 }
@@ -326,7 +305,7 @@ const CartSidebarView: FC = () => {
                         <Link href="/cart" passHref>
                           <a
                             onClick={handleClose}
-                            className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                            className="flex justify-center items-center px-6 py-3 border-2 border-black rounded-sm uppercase shadow-sm font-medium text-black hover:text-white bg-orange hover:bg-orange"
                             href="/cart"
                           >
                             {content.GENERAL_CHECKOUT}
@@ -338,7 +317,7 @@ const CartSidebarView: FC = () => {
                           {GENERAL_OR_TEXT}{' '}
                           <button
                             type="button"
-                            className="text-indigo-600 font-medium hover:text-indigo-500"
+                            className="text-black font-medium hover:text-pink"
                             onClick={handleClose}
                           >
                             {GENERAL_CONTINUE_SHOPPING}
