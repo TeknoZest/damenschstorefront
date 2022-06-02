@@ -18,16 +18,19 @@ export default function ProductSort({
 }: Props) {
   const router = useRouter()
 
+  // const defaultSortBy =
+
   const currentOption = products.sortList?.filter(
     (item: any) => item.key === routerSortOption
   )[0]
+  
   return (
     <Menu as="div" className="relative inline-block">
       <div className="flex">
-        <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-          {GENERAL_SORT}
+        <Menu.Button className="group border-2 border-gray-300 rounded-sm pr-5 pl-2 py-1 inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+          <span className='text-black font-bold pr-1'>{GENERAL_SORT}{': '} </span> {currentOption?.value}
           <ChevronDownIcon
-            className="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+            className="flex-shrink-0 -mr-3 relative top-0 ml-1 h-5 w-5 text-gray-800 group-hover:text-orange"
             aria-hidden="true"
           />
         </Menu.Button>
@@ -42,7 +45,7 @@ export default function ProductSort({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="z-10 origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="z-10 origin-top-right text-left absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             {products.sortList.length &&
               products.sortList.map((option: any) => (

@@ -50,14 +50,16 @@ const FilterItem = ({
   
   let checkboxBgColor = bgColor(option) || 'transparent'
   let borderColor = '#cccccc'
+  let bgClass = 'bg-nonselected-facet'
 
   if(isCheckboxChecked && !isCheckboxTickDisabled){
     checkboxBgColor = '#EC5E28';
     borderColor = '#EC5E28';
+    bgClass = 'bg-selected-facet'
   }
   return (
-    <div key={option.value} className="flex">
-      <div className="flex items-center">
+    <div key={option.value} className={bgClass}>
+      <div className="grid grid-cols-1 items-center w-full">
         <input
           name={`${optionIdx}-input[]`}
           defaultValue={option.value}
@@ -75,8 +77,8 @@ const FilterItem = ({
               style={{
                 content: '',
                 float: 'left',
-                left: '6px',
-                top: '8px',
+                left: 'auto',
+                top: '5px',
                 zIndex: 99999,
                 position: 'absolute',
                 width: '6px',
@@ -84,10 +86,12 @@ const FilterItem = ({
                 border: 'solid #ffffff',
                 borderWidth: '0 2px 2px 0',
                 transform: 'rotate(45deg)',
+                right: '12px'
               }}
             />
           )}
           {generateOptionName()}
+          <span className="px-1 text-sm font-normal text-gray-400 relative top-0">{option.count}</span>
           {sectionKey === FILTER_KEYS.COLOR &&          
           <div
             style={{
@@ -99,8 +103,9 @@ const FilterItem = ({
               borderRadius: '10px',
               background: checkboxBgColor,
               border: '1px solid '+ borderColor,
-              position: 'relative',
+              position: 'absolute',
               marginRight: '6px',
+              right:'0',
             }}
           />
         }
@@ -115,14 +120,14 @@ const FilterItem = ({
               borderRadius: '2px',
               background: checkboxBgColor,
               border: '1px solid ' + borderColor,
-              position: 'relative',
+              position: 'absolute',
               marginRight: '6px',
+              right:'0'
             }}
           />
         }
         </label>
-      </div>
-      <span className="px-1 text-sm font-normal text-gray-400 relative top-0">{option.count}</span>
+      </div>      
     </div>
   )
 }
