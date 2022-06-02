@@ -203,7 +203,7 @@ const SearchProductCard: FC<Props> = ({ product }) => {
               ) : (
 
                 <button
-                    className="absolute right-2 bottom-0 z-99 add-wishlist"
+                    className="absolute right-2 top-2 bg-white rounded-full w-8 h-8 z-50 add-wishlist"
                     onClick={handleWishList}
                 >
                     <HeartIcon

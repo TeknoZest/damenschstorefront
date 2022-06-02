@@ -278,7 +278,7 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
         </Dialog>
       </Transition.Root>
 
-      <header className="fixed top-0 left-0 z-50 bg-white w-full shadow">
+      <header className="fixed top-0 left-0 z-99 bg-white w-full shadow">
         <div className='w-full py-1 justify-center align-center bg-black px-10 text-center'>
           <h4 className='text-white sm:text-sm text-xs font-semibold uppercase'>Black Friday Sale: Upto 60% Off</h4>
         </div>
@@ -457,12 +457,12 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
                     onClick={openWishlist}
                   >
                     <HeartIcon
-                      className="flex-shrink-0 h-6 w-6 block text-black group-hover:text-gray-500 mx-auto"
+                      className="flex-shrink-0 h-6 w-6 block text-black group-hover:text-red-600 mx-auto"
                       aria-hidden="true" aria-label="Wishlist"
                     />
                     <span className='font-normal block text-sm text-black'>Wishlist</span>
                     {wishListItems.length > 0 &&
-                     <span className="ml-2 absolute top-0 -right-0 w-4 h-4 text-white rounded-full bg-pink text-center text-xs font-medium">                     
+                     <span className="ml-2 absolute top-0 -right-0 w-4 h-4 text-white rounded-full bg-orange text-center text-xs font-medium">                     
                           {wishListItems.length}
                       </span>
                     }
