@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { FC, Fragment, useState, useRef } from 'react'
 import { classNames } from '../../utils'
 import { Popover, Transition, Dialog, Tab } from '@headlessui/react'
-import { ShoppingBagIcon, HeartIcon, UserIcon } from '@heroicons/react/outline'
+import { ShoppingBagIcon, ShoppingCartIcon, HeartIcon, UserIcon } from '@heroicons/react/solid'
 import { Searchbar } from '@components/common'
 import { Logo } from '@components/ui'
 import Link from 'next/link'
@@ -278,10 +278,13 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
         </Dialog>
       </Transition.Root>
 
-      <header className="relative bg-white">
-        <nav aria-label="Top" className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div className="border-b border-gray-200 px-4 pb-0 sm:px-0 sm:pb-0">
-            <div className="h-16 flex items-center justify-between">
+      <header className="fixed top-0 left-0 z-50 bg-white w-full shadow">
+        <div className='w-full py-1 justify-center align-center bg-black px-10 text-center'>
+          <h4 className='text-white sm:text-sm text-xs font-semibold uppercase'>Black Friday Sale: Upto 60% Off</h4>
+        </div>
+        <nav aria-label="Top" className="w-full sm:w-3/4 mx-auto sm:px-0 lg:px-0 px-4">
+          <div className="px-4 pb-0 sm:px-0 sm:pb-0">
+            <div className="h-20 flex items-center justify-between">
               {/* Logo */}
               <button
                 type="button"
@@ -300,8 +303,8 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
               </Link>
 
               {/* Flyout menus */}
-              <Popover.Group className="absolute bottom-0 inset-x-0 sm:static w-full sm:self-stretch sm:block hidden sm:h-16">
-                <div className="border-t h-14 px-4 flex space-x-8 overflow-x-auto pb-px sm:h-full sm:border-t-0 sm:justify-center sm:overflow-visible sm:pb-0">
+              <Popover.Group className="absolute bottom-0 inset-x-0 sm:static w-full sm:self-stretch sm:block hidden sm:h-20">
+                <div className="border-t h- px-4 flex space-x-8 overflow-x-auto pb-px sm:h-full sm:border-t-0 sm:justify-center sm:overflow-visible sm:pb-0">
                   {config.map((item: any, idx: number) => {
                     return (
                       <Popover key={idx} className="flex" 
@@ -318,9 +321,9 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
                                   <Popover.Button
                                     className={classNames(
                                       openState == idx
-                                        ? 'border-indigo-600 text-indigo-600'
+                                        ? 'border-red-600 text-black'
                                         : 'border-transparent text-gray-700 hover:text-gray-800',
-                                      'relative z-10 flex items-center sm:h-16 transition-colors ease-out duration-200 text-sm font-medium border-b-2 -mb-px pt-px'
+                                      'relative z-10 flex items-center sm:h-20 transition-colors ease-out duration-200 text-md font-medium border-b-2 -mb-px pt-px'
                                     )}
                                   >
                                     {item.caption}
@@ -331,9 +334,9 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
                               <Popover.Button
                                 className={classNames(
                                   openState == idx
-                                    ? 'border-indigo-600 text-indigo-600'
+                                    ? 'border-red-600 text-black'
                                     : 'border-transparent text-gray-700 hover:text-gray-800',
-                                  'relative z-10 flex items-center sm:h-16 transition-colors ease-out duration-200 text-sm font-medium border-b-2 -mb-px pt-px'
+                                  'relative z-10 flex items-center sm:h-20 transition-colors ease-out duration-200 text-md font-medium border-b-2 -mb-px pt-px'
                                 )}
                               >
                                 {item.caption}
@@ -433,7 +436,7 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
                 {/* account */}
                 <Account title={title} config={accountDropdownConfig} />
                 {/* currency */}
-                <div className="sm:flex hidden">
+                {/* <div className="sm:flex hidden">
                   <CurrencySwitcher
                     config={currencies}
                     title={SELECT_CURRENCY}
@@ -444,39 +447,45 @@ const Navbar: FC<Props> = ({ config, currencies, languages }) => {
                     action={configAction}
                     config={languages}
                   />
-                </div>
+                </div> */}
 
-                {/* Wishlist*/}
+                 {/* Wishlist*/}
 
-                <div className="px-2 flow-root">
+                 <div className="px-1 w-16 flow-root">
                   <button
-                    className="group -m-2 p-2 flex items-center"
+                    className="relative group grid grid-cols-1 items-center text-center align-center justify-center flex-col mx-auto"
                     onClick={openWishlist}
                   >
                     <HeartIcon
-                      className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                      className="flex-shrink-0 h-6 w-6 block text-black group-hover:text-gray-500 mx-auto"
                       aria-hidden="true" aria-label="Wishlist"
                     />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      {wishListItems.length}
-                    </span>
-                    <span className="sr-only">{GENERAL_ITEM_IN_CART}</span>
+                    <span className='font-normal block text-sm text-black'>Wishlist</span>
+                    {wishListItems.length > 0 &&
+                     <span className="ml-2 absolute top-0 -right-0 w-4 h-4 text-white rounded-full bg-pink text-center text-xs font-medium">                     
+                          {wishListItems.length}
+                      </span>
+                    }
+                      <span className="sr-only">{GENERAL_ITEM_IN_CART}</span>                    
                   </button>
                 </div>
                 {/* Cart */}
 
-                <div className="px-2 flow-root">
+                <div className="px-1 w-16 flow-root">
                   <button
-                    className="group -m-2 p-2 flex items-center"
+                    className="group grid relative grid-cols-1 items-center text-center align-center justify-center flex-col mx-auto"
                     onClick={openCart}
                   >
-                    <ShoppingBagIcon
-                      className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
+                    <ShoppingCartIcon
+                      className="flex-shrink-0 h-6 w-6 block text-black group-hover:text-gray-500 mx-auto"
                       aria-hidden="true" aria-label="Add to cart"
                     />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                     <span className='font-normal block text-sm text-black'>Cart</span>
+                     {cartItems.lineItems?.length > 0 &&
+                        <span className="ml-2 absolute top-0 -right-2 w-4 h-4 text-white rounded-full bg-pink text-center text-xs font-medium">                     
                       {cartItems.lineItems?.length}
                     </span>
+}
                     <span className="sr-only">{GENERAL_ITEM_IN_CART}</span>
                   </button>
                 </div>

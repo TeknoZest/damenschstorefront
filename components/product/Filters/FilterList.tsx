@@ -47,8 +47,14 @@ const FilterItem = ({
     if (sectionKey === FILTER_KEYS.COLOR) return option.name.split('|')[1]
     else return option.name
   }
+  
+  let checkboxBgColor = bgColor(option) || 'transparent'
+  let borderColor = '#cccccc'
 
-  const checkboxBgColor = bgColor(option) || 'transparent'
+  if(isCheckboxChecked && !isCheckboxTickDisabled){
+    checkboxBgColor = '#EC5E28';
+    borderColor = '#EC5E28';
+  }
   return (
     <div key={option.value} className="flex">
       <div className="flex items-center">
@@ -62,7 +68,7 @@ const FilterItem = ({
         <label
           htmlFor={`${optionIdx}-input[]`}
           onClick={handleCheckbox}
-          className="cursor-pointer ml-0 text-sm text-gray-500 relative filter-label"
+          className="cursor-pointer ml-0 text-sm text-black relative filter-label relative"
         >
           {isCheckboxChecked && !isCheckboxTickDisabled && (
             <div
@@ -70,34 +76,53 @@ const FilterItem = ({
                 content: '',
                 float: 'left',
                 left: '6px',
-                top: '0px',
+                top: '8px',
                 zIndex: 99999,
                 position: 'absolute',
-                width: '10px',
-                height: '14px',
-                border: 'solid #000',
+                width: '6px',
+                height: '10px',
+                border: 'solid #ffffff',
                 borderWidth: '0 2px 2px 0',
                 transform: 'rotate(45deg)',
               }}
             />
           )}
           {generateOptionName()}
+          {sectionKey === FILTER_KEYS.COLOR &&          
           <div
             style={{
               content: '',
+              top:'2px',
               float: 'left',
-              height: '20px',
-              width: '20px',
-              borderRadius: '2px',
+              height: '18px',
+              width: '18px',
+              borderRadius: '10px',
               background: checkboxBgColor,
-              border: '1px solid #cacaca',
+              border: '1px solid '+ borderColor,
               position: 'relative',
-              marginRight: '10px',
+              marginRight: '6px',
             }}
           />
+        }
+        {sectionKey != FILTER_KEYS.COLOR &&          
+          <div
+            style={{
+              content: '',
+              top:'2px',
+              float: 'left',
+              height: '18px',
+              width: '18px',
+              borderRadius: '2px',
+              background: checkboxBgColor,
+              border: '1px solid ' + borderColor,
+              position: 'relative',
+              marginRight: '6px',
+            }}
+          />
+        }
         </label>
       </div>
-      <span className="px-2 text-gray-500">({option.count})</span>
+      <span className="px-1 text-sm font-normal text-gray-400 relative top-0">{option.count}</span>
     </div>
   )
 }
@@ -105,7 +130,7 @@ const FilterItem = ({
 const SearchInput = ({ placeholder, handleSearch }: any) => {
   return (
     <>
-      <label htmlFor="search-input" className="sr-only">
+      <label className="sr-only">
         {BTN_SEARCH}
       </label>
       <input

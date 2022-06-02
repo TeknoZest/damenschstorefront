@@ -9,6 +9,7 @@ import cartHandler from '@components/services/cart'
 import { useUI } from '@components/ui/context'
 import axios from 'axios'
 import { NEXT_CREATE_WISHLIST } from '@components/utils/constants'
+import { HeartIcon } from '@heroicons/react/outline'
 import {
   ALERT_SUCCESS_WISHLIST_MESSAGE,
   BTN_ADD_TO_WISHLIST,
@@ -160,25 +161,26 @@ const SearchProductCard: FC<Props> = ({ product }) => {
   const buttonConfig = buttonTitle()
 
   return (
-    <div className="border-r border-b border-gray-100">
-      <div key={product.id} className="group relative p-3 sm:p-6">
+    <div className="">
+      <div key={product.id} className="group relative p-3 sm:p-3">
         <Link
           passHref
           href={`/${currentProductData.link}`}
           key={'data-product' + currentProductData.link}
         >
           <a href={currentProductData.link}>
-            <div className="relative rounded-lg overflow-hidden bg-gray-200 aspect-w-1 aspect-h-1 group-hover:opacity-75">
-              <div className='image-container'>
+            <div className="relative overflow-hidden rounded-2xl bg-gray-200 aspect-w-1 aspect-h-1 hover:opacity-75">
+              <div className='image-container rounded-lg'>
               {product.image !=null &&
                   <Image 
-                      src={`${product.image}&h=200` || IMG_PLACEHOLDER}
+                      src={`${product.image}&h=400` || IMG_PLACEHOLDER}
                       alt={product.name}
                       onMouseEnter={() => handleHover('enter')}
                       onMouseLeave={() => handleHover('leave')}
-                      layout='fill' 
-                      sizes='50vw'
-                      className='w-full sm:h-72 h-48 object-center object-cover image'>
+                      layout='responsive' 
+                      width={400}
+                      height={600}
+                      className='w-full sm:h-full  h-full object-center object-cover'>
                   </Image>                  
                 }
               </div>
@@ -192,21 +194,31 @@ const SearchProductCard: FC<Props> = ({ product }) => {
                   {BTN_NOTIFY_ME}
                 </div>
               )}
+              {isInWishList ? (
+                <span className="text-gray-900">
+                  {ALERT_SUCCESS_WISHLIST_MESSAGE}
+                </span>
+              ) : (
+
+                <button
+                    className="absolute right-2 bottom-0 z-99 add-wishlist"
+                    onClick={handleWishList}
+                >
+                    <HeartIcon
+                        className="flex-shrink-0 h-8 w-8 z-50 text-gray-800 hover:text-gray-500 rounded-3xl p-1 opacity-80"
+                        aria-hidden="true"
+                />
+                    <span className="ml-2 text-sm font-medium text-gray-700 hover:text-red-800"></span>
+                    <span className="sr-only">f</span>
+                </button>            
+              )}   
               <span className="sr-only">{product.name}</span>
             </div>
           </a>
         </Link>
 
-        <div className="sm:pt-10 pt-4 text-center">
-          <h3 className="sm:min-h-50px min-h-40px sm:text-sm text-xs font-medium text-gray-900">
-            <Link href={`/${currentProductData.link}`}>
-              <a href={`/${currentProductData.link}`}>{product.name}</a>
-            </Link>
-          </h3>
-
-          <p className="sm:mt-4 mt-1 font-medium text-gray-900">
-            {product?.price?.formatted?.withTax}
-          </p>
+        <div className="sm:pt-2 pt-4">
+          <div className='flex flex-col w-full mb-2 border-b gorder-gray-300'>
           {hasColorVariation ? (
             <AttributeSelector
               attributes={product.variantProductsAttributeMinimal}
@@ -214,29 +226,30 @@ const SearchProductCard: FC<Props> = ({ product }) => {
               link={currentProductData.link}
             />
           ) : (
-            <div className="sm:h-10 sm:w-10 h-5 w-5 sm:mr-2 mr-1 mt-2 inline-block" />
+            <div className="sm:h-4 sm:w-4 h-4 w-4 sm:mr-2 mr-1 mt-2 inline-block" />
           )}
+          </div>
+          <h3 className="truncate sm:text-sm text-xs font-medium text-gray-900">
+            <Link href={`/${currentProductData.link}`}>
+              <a href={`/${currentProductData.link}`}>{product.name}</a>
+            </Link>
+          </h3>
+
+          <p className="sm:mt-2 mt-1 font-bold text-black">
+            {product?.price?.formatted?.withTax}
+            {product?.listPrice?.raw?.withTax > 0 && product?.listPrice?.raw?.withTax != product?.price?.raw?.withTax &&
+              <span className='px-2 text-sm line-through font-normal text-red-400'>{product?.listPrice?.formatted?.withTax}</span>
+            }
+          </p>       
+                 
           <div className="flex flex-col">
             <Button
-              className="mt-2"
+              className="mt-2 hidden"
               title={buttonConfig.title}
               action={buttonConfig.action}
               type="button"
               buttonType={buttonConfig.buttonType || 'cart'}
-            />
-            {isInWishList ? (
-              <span className="text-gray-900">
-                {ALERT_SUCCESS_WISHLIST_MESSAGE}
-              </span>
-            ) : (
-              <Button
-                className="mt-2"
-                action={handleWishList}
-                buttonType="wishlist"
-                colorScheme={WISHLIST_BUTTON_COLOR_SCHEME}
-                title={BTN_ADD_TO_WISHLIST}
-              />
-            )}
+            />            
           </div>
         </div>
       </div>

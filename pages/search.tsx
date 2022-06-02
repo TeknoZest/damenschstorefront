@@ -287,18 +287,18 @@ function Search({ query, setEntities, recordEvent }: any) {
     : data.products
 
   return (
-    <div className="bg-white">
+    <div className="bg-white w-full sm:w-3/4 mx-auto">
       {/* Mobile menu */}
       <main className="pb-24">
-        <div className="text-center sm:py-16 py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="sm:text-4xl text-2xl font-extrabold tracking-tight text-gray-900">
+        <div className="text-left sm:pb-4 pb-6 px-4 sm:px-0 lg:px-0">          
+          <h4 className="text-sm mt-2 font-medium tracking-tight text-gray-500 sm:h-6">
+          Showing {data.products.total} Results for
+          </h4>
+          <h1 className="sm:text-2xl text-xl font-bold tracking-tight text-gray-900">
             Catalog
           </h1>
-          <h1 className="sm:text-xl text-lg mt-2 font-medium tracking-tight text-gray-500 sm:h-10">
-            {data.products.total} results
-          </h1>
         </div>
-        <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 max-w-7xl mx-auto overflow-hidden sm:px-6 lg:px-8">
+        <div className="grid sm:grid-cols-12 grid-cols-1 gap-1 overflow-hidden sm:px-0 lg:px-0 px-4">
           {/* {MOBILE FILTER PANEL SHOW ONLY IN MOBILE} */}
 
           <div className="sm:col-span-3 sm:hidden flex flex-col">
@@ -314,14 +314,14 @@ function Search({ query, setEntities, recordEvent }: any) {
 
           {/* {FILTER PANEL SHOW ONLY IN DESKTOP VERSION} */}
 
-          <div className="sm:col-span-3 sm:block hidden">
+          <div className="sm:col-span-2 sm:block hidden">
             <ProductFilterRight
               handleFilters={handleFilters}
               products={data.products}
               routerFilters={state.filters}
             />
           </div>
-          <div className="sm:col-span-9">
+          <div className="sm:col-span-10">
             {/* {HIDE FILTER TOP BAR IN MOBILE} */}
 
             <div className="flex-1 sm:block hidden">

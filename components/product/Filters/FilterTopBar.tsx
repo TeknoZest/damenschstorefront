@@ -44,7 +44,7 @@ export default function FiltersRightOpen({
       <div className="max-w-3xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
         <section
           aria-labelledby="filter-heading-top"
-          className="border-t border-gray-200 py-1"
+          className="py-1"
         >
           <h2 className="sr-only">
             {PRODUCT_FILTER}
