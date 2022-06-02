@@ -18,6 +18,7 @@ import {
   GENERAL_ADD_TO_BASKET,
   IMG_PLACEHOLDER,
 } from '@components/utils/textVariables'
+import { round } from 'lodash'
 interface Props {
   product: any
 }
@@ -159,7 +160,8 @@ const SearchProductCard: FC<Props> = ({ product }) => {
   }
 
   const buttonConfig = buttonTitle()
-
+  const saving  = product?.listPrice?.raw?.withTax - product?.price?.raw?.withTax;
+  const discount  = round((saving / product?.listPrice?.raw?.withTax) * 100, 0);
   return (
     <div className="">
       <div key={product.id} className="group relative p-3 sm:p-3">
@@ -229,16 +231,19 @@ const SearchProductCard: FC<Props> = ({ product }) => {
             <div className="sm:h-4 sm:w-4 h-4 w-4 sm:mr-2 mr-1 mt-2 inline-block" />
           )}
           </div>
-          <h3 className="truncate sm:text-sm text-xs font-medium text-gray-900">
+          <h3 className="sm:text-sm text-xs font-bold text-black">
             <Link href={`/${currentProductData.link}`}>
               <a href={`/${currentProductData.link}`}>{product.name}</a>
             </Link>
           </h3>
 
-          <p className="sm:mt-2 mt-1 font-bold text-black">
+          <p className="sm:mt-2 mt-1 font-medium text-sm text-gray-800">
             {product?.price?.formatted?.withTax}
             {product?.listPrice?.raw?.withTax > 0 && product?.listPrice?.raw?.withTax != product?.price?.raw?.withTax &&
-              <span className='px-2 text-sm line-through font-normal text-red-400'>{product?.listPrice?.formatted?.withTax}</span>
+              <>
+                <span className='px-2 text-sm line-through font-normal text-gray-400'>{product?.listPrice?.formatted?.withTax}</span>
+                <span className='text-red-600 text-sm'>{discount}% Off</span>
+              </>
             }
           </p>       
                  
