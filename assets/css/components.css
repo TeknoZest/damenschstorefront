@@ -37,3 +37,7 @@
 .hover\:text-orange:hover {
   color: #EC5E28!important;
 }
+
+.table{
+  width: 100%!important ;
+}

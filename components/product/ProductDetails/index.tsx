@@ -9,16 +9,16 @@ const colorRegex = /^#(?:[0-9a-f]{3}){1,2}$/i
 
 const Attributes = ({ attributes = [] }: any) => {
   return (
-    <table className="text-gray-900">
+    <table className="text-gray-900 table">
       <tbody>
         {attributes.map((attr: any, idx: number) => {
           return (
             <tr key={idx}>
-              <th className="border text-left px-5 py-5">{attr.display}</th>
-              <td className="border text-left px-5 py-5">
+              <th className="border text-left px-3 py-2 bg-gray-50 text-md font-medium">{attr.display}</th>
+              <td className="border text-left px-3 uppercase text-sm py-2">
                 {colorRegex.test(attr.value) ? (
                   <div
-                    className="h-6 w-6 rounded-full mr-2 mt-2 border border-gray-100"
+                    className="h-6 w-6 rounded-full mr-2 border border-gray-100"
                     style={{ backgroundColor: attr.value }}
                   />
                 ) : (
