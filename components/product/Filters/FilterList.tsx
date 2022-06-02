@@ -103,7 +103,7 @@ const FilterItem = ({
               borderRadius: '10px',
               background: checkboxBgColor,
               border: '1px solid '+ borderColor,
-              position: 'absolute',
+              position: 'relative',
               marginRight: '6px',
               right:'0',
             }}

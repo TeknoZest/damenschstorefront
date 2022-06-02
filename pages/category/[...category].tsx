@@ -332,7 +332,7 @@ function CategoryPage({ category, products }: any) {
           <h2>{category.description}</h2>
           
         </div>
-        {category && category.subCategories && category.subCategories.length &&
+        {category && category.subCategories && category.subCategories.length > 0  &&
           <div className="sm:px-0 grid grid-cols-1 sm:grid-cols-6">
             <div className="sm:col-span-12 py-2">
               <div className="sm:px-0 grid grid-cols-1 text-center sm:grid-cols-6 bg-gray-50 border p-2">
