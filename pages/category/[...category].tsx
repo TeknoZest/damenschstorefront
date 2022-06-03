@@ -17,7 +17,7 @@ import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import useSwr from 'swr'
 import { postData } from '@components/utils/clientFetcher'
-import { ALL_CATEGORY, BAD_URL_TEXT, IMG_PLACEHOLDER, RESULTS } from '@components/utils/textVariables'
+import { ALL_CATEGORY, BAD_URL_TEXT, GENERAL_SHOWING, IMG_PLACEHOLDER, RESULTS } from '@components/utils/textVariables'
 import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
@@ -323,7 +323,7 @@ function CategoryPage({ category, products }: any) {
         <div className="pt-0 mb-4 px-4 sm:px-0 lg:px-0">
          {!!products && (
             <h4 className="text-sm mt-0 font-medium tracking-tight text-gray-500 sm:h-6">
-             Showing {products.total} {RESULTS} for 
+             {GENERAL_SHOWING} {products.total} {RESULTS} for 
             </h4>
           )}
           <h1 className="sm:text-2xl text-xl font-bold tracking-tight text-gray-900 capitalize">
